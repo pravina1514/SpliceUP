@@ -16,6 +16,7 @@ public class Review {
 
 	@OneToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "uid", nullable = false)
+	
 	private UserMaster user;
 
 	@OneToOne(fetch = FetchType.EAGER, optional = false)

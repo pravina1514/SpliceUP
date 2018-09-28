@@ -14,7 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "user_master")
+@Table(name = "Login")
 public class UserMaster {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

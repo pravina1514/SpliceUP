@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+ <head>
+    <title></title>
+	<meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+    
+</head>
+<body>
+<div class="signin">
+        <form th:action="createuser" method="post">  
+        <h1>Sign In</h1>
+        <input type="text" name="email" placeholder="Enter UserName" />
+        <input type="password" name="password" placeholder="Enter Password" />
+        <button class="btn">Sign in</button>
+    </form>
+</div>
+</body>
+</html>
