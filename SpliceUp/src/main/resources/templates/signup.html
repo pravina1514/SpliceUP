@@ -7,14 +7,18 @@
     <title></title>
 	<meta charset="utf-8" />
     <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+  <script th:src="@{/js/form-validation.js}"></script>
     
 </head>
 <body>
 <div class="signin">
-        <form th:action="createuser" method="post">  
-        <h1>Sign In</h1>
-        <input type="text" name="email" placeholder="Enter UserName" />
-        <input type="password" name="password" placeholder="Enter Password" />
+        <form name="registration" action="/signup/createuser" method="post" th:object="${user}">  
+        <h1>Sign In </h1>
+        <input type="email" th:field="*{email}" maxlength="2" placeholder="Enter UserName" />
+        <input type="password" th:field="*{password}"  required="required" placeholder="Enter Password" />
+        <input type="text" th:if="${user.email == 'hemal'}" th:field="*{userDetail.name}" placeholder="Enter name" />
         <button class="btn">Sign in</button>
     </form>
 </div>

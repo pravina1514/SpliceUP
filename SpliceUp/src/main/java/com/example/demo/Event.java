@@ -35,6 +35,8 @@ public class Event {
 	private String name;
 	private String image;
 	private String description;
+	private boolean isPaidEvent;
+
 	private Date s_date;
 	private Date e_date;
 	private String location;
@@ -117,6 +119,30 @@ public class Event {
 
 	public void setLocation(String location) {
 		this.location = location;
+	}
+
+	public Cities getCity() {
+		return city;
+	}
+
+	public void setCity(Cities city) {
+		this.city = city;
+	}
+
+	public List<Faq> getQuestions() {
+		return questions;
+	}
+
+	public void setQuestions(List<Faq> questions) {
+		this.questions = questions;
+	}
+
+	public boolean isPaidEvent() {
+		return isPaidEvent;
+	}
+
+	public void setPaidEvent(boolean isPaidEvent) {
+		this.isPaidEvent = isPaidEvent;
 	}
 
 }

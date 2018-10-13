@@ -25,12 +25,16 @@ public class SignUpController {
 	UserMasterRepository repo;
 
 	@GetMapping
-	public String welcome(Map<String, Object> model) {
-		return "signup";
+	public ModelAndView welcome(Map<String, Object> model) {
+		UserMaster user = new UserMaster();
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("signup");
+		modelAndView.addObject("user", user);
+		return modelAndView;
 	}
 
 	@RequestMapping(value = "/createuser", method = RequestMethod.POST)
-	public ModelAndView save(@ModelAttribute UserMaster user) {
+	public ModelAndView save(@ModelAttribute UserMaster user, @ModelAttribute UserDetail userDeta) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("signup");
 		modelAndView.addObject("user", user);
