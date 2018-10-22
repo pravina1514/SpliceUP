@@ -34,10 +34,12 @@ public class SignUpController {
 	}
 
 	@RequestMapping(value = "/createuser", method = RequestMethod.POST)
-	public ModelAndView save(@ModelAttribute UserMaster user, @ModelAttribute UserDetail userDeta) {
+	public ModelAndView save(@ModelAttribute UserMaster user) {
+		user.getUserDetail().setUser(user);
+		UserMaster dbUser=repo.save(user);
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("signup");
-		modelAndView.addObject("user", user);
+		modelAndView.addObject("user", dbUser);
 		return modelAndView;
 	}
 
