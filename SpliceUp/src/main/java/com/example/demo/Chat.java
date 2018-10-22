@@ -18,7 +18,7 @@ public class Chat {
 
 	@OneToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "uid", nullable = false)
-	private UserMaster user;
+	private Login user;
 
 	@OneToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "eid", nullable = false)
@@ -40,11 +40,11 @@ public class Chat {
 		this.message = message;
 	}
 
-	public UserMaster getUser() {
+	public Login getUser() {
 		return user;
 	}
 
-	public void setUser(UserMaster user) {
+	public void setUser(Login user) {
 		this.user = user;
 	}
 

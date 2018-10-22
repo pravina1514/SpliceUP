@@ -11,6 +11,6 @@ import org.springframework.stereotype.Repository;
  *
  */
 @Repository
-public interface UserMasterRepository extends JpaRepository<UserMaster, Long> {
+public interface UserMasterRepository extends JpaRepository<Login, Long> {
 
 }

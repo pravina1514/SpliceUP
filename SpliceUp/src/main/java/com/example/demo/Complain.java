@@ -16,11 +16,11 @@ public class Complain {
 
 	@OneToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "uid", nullable = false)
-	private UserMaster user;
+	private Login user;
 
 	@OneToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "cuid", nullable = false)
-	private UserMaster cUser;
+	private Login cUser;
 
 	@OneToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "eid", nullable = false)
@@ -36,19 +36,19 @@ public class Complain {
 		this.cmpid = cmpid;
 	}
 
-	public UserMaster getUser() {
+	public Login getUser() {
 		return user;
 	}
 
-	public void setUser(UserMaster user) {
+	public void setUser(Login user) {
 		this.user = user;
 	}
 
-	public UserMaster getcUser() {
+	public Login getcUser() {
 		return cUser;
 	}
 
-	public void setcUser(UserMaster cUser) {
+	public void setcUser(Login cUser) {
 		this.cUser = cUser;
 	}
 

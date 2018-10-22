@@ -16,7 +16,7 @@ public class Participant {
 	private boolean payment;
 	@OneToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "uid", nullable = false)
-	private UserMaster user;
+	private Login user;
 
 	@OneToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "eid", nullable = false)
@@ -38,11 +38,11 @@ public class Participant {
 		this.id = id;
 	}
 
-	public UserMaster getUser() {
+	public Login getUser() {
 		return user;
 	}
 
-	public void setUser(UserMaster user) {
+	public void setUser(Login user) {
 		this.user = user;
 	}
 

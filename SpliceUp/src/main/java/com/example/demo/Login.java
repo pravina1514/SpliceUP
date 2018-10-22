@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Login")
-public class UserMaster {
+public class Login {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "uid")

@@ -21,7 +21,7 @@ public class Faq {
 
 	@OneToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "uid", nullable = false)
-	private UserMaster user;
+	private Login user;
 
 	@OneToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "eid", nullable = false)
@@ -48,11 +48,11 @@ public class Faq {
 		this.qid = qid;
 	}
 
-	public UserMaster getUser() {
+	public Login getUser() {
 		return user;
 	}
 
-	public void setUser(UserMaster user) {
+	public void setUser(Login user) {
 		this.user = user;
 	}
 

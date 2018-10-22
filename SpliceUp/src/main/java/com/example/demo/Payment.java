@@ -16,7 +16,7 @@ public class Payment {
 
 	@OneToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "uid", nullable = false)
-	private UserMaster user;
+	private Login user;
 
 	@OneToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "eid", nullable = false)
@@ -33,11 +33,11 @@ public class Payment {
 		this.id = id;
 	}
 
-	public UserMaster getUser() {
+	public Login getUser() {
 		return user;
 	}
 
-	public void setUser(UserMaster user) {
+	public void setUser(Login user) {
 		this.user = user;
 	}
 

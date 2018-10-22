@@ -21,7 +21,7 @@ public class UserDetail {
 
 	@OneToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "uid", nullable = false)
-	private UserMaster user;
+	private Login user;
 
 	@Column(name = "mobile_no")
 	private Long mobile_no;
@@ -54,11 +54,11 @@ public class UserDetail {
 		this.mobile_no = mobile_no;
 	}
 
-	public UserMaster getUser() {
+	public Login getUser() {
 		return user;
 	}
 
-	public void setUser(UserMaster user) {
+	public void setUser(Login user) {
 		this.user = user;
 	}
 

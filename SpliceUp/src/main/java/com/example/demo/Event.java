@@ -21,7 +21,7 @@ public class Event {
 
 	@OneToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "host_id", nullable = false)
-	private UserMaster eventHost;
+	private Login eventHost;
 
 	@OneToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "cid", nullable = false)
@@ -49,11 +49,11 @@ public class Event {
 		this.eid = eid;
 	}
 
-	public UserMaster getEventHost() {
+	public Login getEventHost() {
 		return eventHost;
 	}
 
-	public void setEventHost(UserMaster eventHost) {
+	public void setEventHost(Login eventHost) {
 		this.eventHost = eventHost;
 	}
 

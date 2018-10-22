@@ -5,6 +5,8 @@ package com.example.demo;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +21,7 @@ public class UserServiceImpl implements UserService {
 	UserMasterRepository userRepo;
 
 	@Override
-	public List<UserMaster> getAllUsers() {
+	public List<Login> getAllUsers() {
 		return userRepo.findAll();
 	}
 
@@ -29,7 +31,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserMaster saveUser(UserMaster user) {
+	@Transactional
+	public Login saveUser(Login user) {
 		return userRepo.save(user);
 	}
 
