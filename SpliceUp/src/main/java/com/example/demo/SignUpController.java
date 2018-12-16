@@ -24,6 +24,13 @@ public class SignUpController {
 	@Autowired
 	UserService service;
 
+	@GetMapping(value = "/contact")
+	public ModelAndView contact() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("contact");
+		return modelAndView;
+	}
+
 	@GetMapping
 	public ModelAndView welcome(Map<String, Object> model) {
 		Login user = new Login();
