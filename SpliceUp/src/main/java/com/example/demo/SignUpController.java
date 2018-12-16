@@ -27,8 +27,9 @@ public class SignUpController {
 	@GetMapping
 	public ModelAndView welcome(Map<String, Object> model) {
 		Login user = new Login();
+		user.setUserDetail(new UserDetail());
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("signup");
+		modelAndView.setViewName("registeration");
 		modelAndView.addObject("user", user);
 		return modelAndView;
 	}
