@@ -25,7 +25,7 @@ public class Login {
 	@Column(name = "email")
 	private String email;
 
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "login")
 	private UserDetail userDetail;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "eventHost")
