@@ -1382,6 +1382,32 @@ img.img-fluid.img-posi-2 {
     padding: 1em;
     width: 91%;
 }
+
+.caret
+{
+	display:inline-block;
+	width:0;height:0;
+	margin-left:2 px;
+	vertical-align:middle;
+	border-top:4 px solid;
+	border-right:4 px solid transparent;
+	border-left:4 px solid transparent;
+}
+
+.dropdown-menu
+{
+	position:absolute;
+	top:100%;
+	left:0;
+	z-index:1000;
+	display:none;
+	float:left;
+	padding:5 px 0;
+	margin:2 px 0;
+	font size:14 px;
+	border:1 px solid# cccccc;
+	
+}
 }
 
 /* -- //Responsive code -- */

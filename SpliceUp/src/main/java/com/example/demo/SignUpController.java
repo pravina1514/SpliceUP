@@ -30,7 +30,28 @@ public class SignUpController {
 		modelAndView.setViewName("contact");
 		return modelAndView;
 	}
+	
+	@GetMapping(value = "/home1")
+	public ModelAndView home1() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("home1");
+		return modelAndView;
+	}
+	@GetMapping(value = "/home2")
+	public ModelAndView home2() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("home2");
+		return modelAndView;
+	}
 
+	@GetMapping(value = "/events")
+	public ModelAndView events() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("services");
+		return modelAndView;
+	}
+
+	
 	@GetMapping
 	public ModelAndView welcome(Map<String, Object> model) {
 		Login user = new Login();
