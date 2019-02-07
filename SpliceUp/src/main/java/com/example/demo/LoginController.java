@@ -20,7 +20,7 @@ public class LoginController {
 	private SecurityService securityService;
 
 	@RequestMapping(value = "/createuser", method = RequestMethod.POST)
-	public String registration(@ModelAttribute Login user,Model model) {
+	public String registration(@ModelAttribute Login user, Model model) {
 		Login existingUser = service.findUserByEmail(user.getEmail());
 		if (existingUser != null) {
 
@@ -34,7 +34,6 @@ public class LoginController {
 
 			securityService.autologin(dbUser.getEmail(), dbUser.getPassword());
 			return "redirect:/event/services";
-
 
 		}
 	}
@@ -51,8 +50,11 @@ public class LoginController {
 
 	@GetMapping
 	public ModelAndView home2() {
+		Login user = new Login();
+		user.setUserDetail(new UserDetail());
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("login");
+		modelAndView.addObject("user", user);
 		return modelAndView;
 	}
 }
