@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+ <!-- Meta-Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Estate Register Form a Responsive Web Template, Bootstrap Web Templates, Flat Web Templates, Android Compatible Web Template, Smartphone Compatible Web Template, Free Webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design">
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- //Meta-Tags -->
+	
+	<!-- css files -->
+	<link th:href="@{/css/font-awesome.min.css}"  rel="stylesheet" type="text/css" media="all">
+	<link th:href="@{/css/style.css}"  rel="stylesheet" type="text/css" media="all"/>
+	<!-- //css files -->
+	
+	<!-- google fonts -->
+	<link th:href="@{//fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900}" rel="stylesheet">
+	<!-- //google fonts -->
+	
+</head>
+<body>
+
+<div class="loginform">
+	<h1>Login Form</h1>
+		<div class="container">
+			<!-- main content -->
+			<div class="agile_info">
+				<div class="w3l_form">
+					<div class="left_grid_info">
+						<img src="images/left.png" alt="" />
+					</div>
+				</div>
+				<div class="w3_info">
+						<form th:action="@{/signup/loginuser}" th:object="${user}" method="post" th>
+						
+							
+							<div class="input-group">
+								<span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+								<input type="email" placeholder="Email"  th:field="*{email}" required="required"> 
+							</div>
+							
+							<div class="input-group">
+								<span><i class="fa fa-lock" aria-hidden="true"></i></span>
+								<input type="Password" name="password" th:field="*{password}"  placeholder="Password" required="required">
+							</div>        
+								<button class="btn btn-danger btn-block" type="submit">Login Up</button >                
+						</form>
+					<p class="account">New user? Create Account <a href="#">Signup</a></p>
+				</div>
+			</div>
+			<!-- //main content -->
+		</div>
+		<!-- footer -->
+		
+</div>
+	
+</body>
+</html>

@@ -30,13 +30,14 @@ public class SignUpController {
 		modelAndView.setViewName("contact");
 		return modelAndView;
 	}
-	
+
 	@GetMapping(value = "/home1")
 	public ModelAndView home1() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("home1");
 		return modelAndView;
 	}
+
 	@GetMapping(value = "/home2")
 	public ModelAndView home2() {
 		ModelAndView modelAndView = new ModelAndView();
@@ -51,7 +52,26 @@ public class SignUpController {
 		return modelAndView;
 	}
 
-	
+	@GetMapping(value = "/loginuser")
+	public ModelAndView inside(Map<String, Object> model) {
+		Login user = new Login();
+		user.setUserDetail(new UserDetail());
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("login");
+		modelAndView.addObject("user", user);
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "/loginuser", method = RequestMethod.POST)
+	public ModelAndView add(@ModelAttribute Login user) {
+		user.getUserDetail().setUser(user);
+		Login dbUser = service.saveUser(user);
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("login");
+		modelAndView.addObject("user", dbUser);
+		return modelAndView;
+	}
+
 	@GetMapping
 	public ModelAndView welcome(Map<String, Object> model) {
 		Login user = new Login();

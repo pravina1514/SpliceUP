@@ -37,4 +37,49 @@ public class EventController {
 		return modelAndView;
 	}
 
+	@GetMapping(value = "/home")
+	public ModelAndView home() {
+
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("index");
+
+		return modelAndView;
+	}
+
+	@GetMapping(value = "/about")
+	public ModelAndView about() {
+
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("about");
+
+		return modelAndView;
+	}
+
+	@GetMapping(value = "/services")
+	public ModelAndView services() {
+
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("services");
+
+		return modelAndView;
+	}
+
+	@GetMapping(value = "/gallery")
+	public ModelAndView gallery() {
+
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("gallery");
+
+		return modelAndView;
+	}
+
+	@GetMapping(value = "/contact")
+	public ModelAndView contact() {
+
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("contact");
+
+		return modelAndView;
+	}
+
 }
