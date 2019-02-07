@@ -19,6 +19,8 @@ public interface UserService {
 	public void deleteUser(long id);
 
 	public Login saveUser(Login user);
+	
+	public Login findUserByEmail(String email);
 
 	User loadUserByUsername(String username) throws UsernameNotFoundException;
 }

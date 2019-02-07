@@ -44,7 +44,7 @@
 				<div class="w3_info">
 					<h2>Sign up for an Account</h2>
 					<p>Vestibulum est nulla, fermentum eget ipsum euismod et, tincidunt at dui dolor sit.</p>
-						<form th:action="@{/signup/createuser}" th:object="${user}" method="post" th>
+						<form th:action="@{/login/createuser}" th:object="${user}" method="post" th>
 							<div class="input-group">
 								<span><i class="fa fa-user" aria-hidden="true"></i></span>
 								<input type="text" th:field="*{userDetail.name}" placeholder="Full Name" required="required"> 

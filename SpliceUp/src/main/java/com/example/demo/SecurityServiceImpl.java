@@ -11,8 +11,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class SecurityServiceImpl implements SecurityService{
     
-	@Autowired
-    private AuthenticationManager authenticationManager;
 
     @Autowired
     private UserService userDetailsService;
@@ -35,7 +33,6 @@ public class SecurityServiceImpl implements SecurityService{
     	User userDetails = userDetailsService.loadUserByUsername(username);
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
 
-        authenticationManager.authenticate(usernamePasswordAuthenticationToken);
 
         if (usernamePasswordAuthenticationToken.isAuthenticated()) {
             SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);

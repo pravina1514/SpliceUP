@@ -14,6 +14,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -41,16 +42,22 @@ public class UserServiceImpl implements UserService {
 	public Login saveUser(Login user) {
 		return userRepo.save(user);
 	}
-	
-    @Override
-    @Transactional
-    public User loadUserByUsername(String username) throws UsernameNotFoundException {
-        Login user = userRepo.findByEmail(username);
 
-        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        grantedAuthorities.add(new SimpleGrantedAuthority(user.getUserDetail().getRole()));
-        
-        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), grantedAuthorities);
-    }
+	@Override
+	@Transactional
+	public User loadUserByUsername(String username) throws UsernameNotFoundException {
+		Login user = userRepo.findByEmail(username);
+
+		Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+		grantedAuthorities.add(new SimpleGrantedAuthority(user.getUserDetail().getRole()));
+
+		return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
+				grantedAuthorities);
+	}
+
+	@Override
+	public Login findUserByEmail(String email) {
+		return userRepo.findByEmail(email);
+	}
 
 }
