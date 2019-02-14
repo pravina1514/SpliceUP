@@ -16,10 +16,11 @@ public class EventController {
 	EventRepository eventRepo;
 
 	@Autowired
-	UserService userService;
+	UserService service;
 
 	@RequestMapping(value = "/createEvent", method = RequestMethod.POST)
 	public String doLogin(@ModelAttribute Event event) {
+		event.setEventHost(service.getLoggedInUser());
 		eventRepo.save(event);
 		return "redirect:/event/services";
 
