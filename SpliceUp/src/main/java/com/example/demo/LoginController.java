@@ -19,13 +19,14 @@ public class LoginController {
 	@Autowired
 	private SecurityService securityService;
 
-	@RequestMapping(value = "/createuser", method = RequestMethod.POST)
+	@RequestMapping(value = "/registration", method = RequestMethod.POST)
 	public String registration(@ModelAttribute Login user, Model model) {
 		Login existingUser = service.findUserByEmail(user.getEmail());
 		if (existingUser != null) {
 
 			model.addAttribute("user", user);
-			return "registration";
+			model.addAttribute("userexists", "true");
+			return "registeration";
 
 		} else {
 			user.getUserDetail().setRole("ROLE_USER");
@@ -45,16 +46,48 @@ public class LoginController {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("registeration");
 		modelAndView.addObject("user", user);
+		model.addAttribute("userexists", "false");
 		return modelAndView;
 	}
 
 	@GetMapping
-	public ModelAndView home2() {
+	public ModelAndView login() {
 		Login user = new Login();
 		user.setUserDetail(new UserDetail());
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("login");
 		modelAndView.addObject("user", user);
+		modelAndView.addObject("inValidInfo", "false");
+
 		return modelAndView;
 	}
+
+	@GetMapping(value = "/doLogin")
+	public ModelAndView loginPage() {
+		Login user = new Login();
+		user.setUserDetail(new UserDetail());
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("login");
+		modelAndView.addObject("user", user);
+		modelAndView.addObject("inValidInfo", "false");
+
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "/doLogin", method = RequestMethod.POST)
+	public String doLogin(@ModelAttribute Login user, Model model) {
+		Login existingUser = service.findUserByEmail(user.getEmail());
+		if (existingUser != null && existingUser.getPassword().equals(user.getPassword())) {
+			securityService.autologin(existingUser.getEmail(), existingUser.getPassword());
+			return "redirect:/event/services";
+
+		} else {
+			model.addAttribute("user", user);
+			model.addAttribute("inValidInfo", "true");
+			return "login";
+
+		}
+
+	}
+
 }
