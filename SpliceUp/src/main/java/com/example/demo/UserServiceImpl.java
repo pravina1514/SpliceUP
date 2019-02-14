@@ -12,9 +12,9 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -51,8 +51,31 @@ public class UserServiceImpl implements UserService {
 		Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
 		grantedAuthorities.add(new SimpleGrantedAuthority(user.getUserDetail().getRole()));
 
-		return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
-				grantedAuthorities);
+		return new User(user.getEmail(), user.getPassword(), grantedAuthorities);
+	}
+
+	@Override
+	public Login getLoggedInUser() {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String username = null;
+		if (principal instanceof User) {
+			username = ((User) principal).getUsername();
+		} else {
+			username = principal.toString();
+		}
+		return this.findUserByEmail(username);
+	}
+
+	@Override
+	public String getLoggedInUserRole() {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String userRole = null;
+		if (principal instanceof User) {
+			userRole = ((User) principal).getAuthorities().iterator().next().getAuthority();
+		} else {
+			userRole = principal.toString();
+		}
+		return userRole;
 	}
 
 	@Override

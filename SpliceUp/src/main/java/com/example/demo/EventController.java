@@ -1,13 +1,29 @@
 package com.example.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value = "/event")
 public class EventController {
+
+	@Autowired
+	EventRepository eventRepo;
+
+	@Autowired
+	UserService userService;
+
+	@RequestMapping(value = "/createEvent", method = RequestMethod.POST)
+	public String doLogin(@ModelAttribute Event event) {
+		eventRepo.save(event);
+		return "redirect:/event/services";
+
+	}
 
 	@GetMapping(value = "/hostEvent")
 	public ModelAndView hostEvent() {

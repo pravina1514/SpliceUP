@@ -79,6 +79,8 @@ public class LoginController {
 		Login existingUser = service.findUserByEmail(user.getEmail());
 		if (existingUser != null && existingUser.getPassword().equals(user.getPassword())) {
 			securityService.autologin(existingUser.getEmail(), existingUser.getPassword());
+			service.getLoggedInUserRole();
+
 			return "redirect:/event/services";
 
 		} else {
