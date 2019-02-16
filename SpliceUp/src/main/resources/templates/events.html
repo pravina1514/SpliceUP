@@ -1,63 +1,13 @@
-﻿
-<!--Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="default">
 
-<head>
-<title>Rambling A Travel Category Bootstrap Responsive website
-	Template | Contact :: w3layouts</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta charset="utf-8" />
-<meta name="keywords"
-	content="Rambling Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
-<!-- Custom Theme files -->
-<link th:href="@{/css/bootstrap.css}" type="text/css" rel="stylesheet"
-	media="all">
-<link th:href="@{/css/dataTables.bootstrap4.min.css}" type="text/css"
-	rel="stylesheet" media="all">
 
-<link th:href="@{/css/style1.css}" type="text/css" rel="stylesheet"
-	media="all">
-<link th:href="@{/css/menufullpage.css}" rel="stylesheet">
-<!-- font-awesome icons -->
-<link th:href="@{/css/fontawesome-all.min.css}" rel="stylesheet">
-<!-- //Custom Theme files -->
-<!-- online-fonts -->
-<link
-	href="//fonts.googleapis.com/css?family=IBM+Plex+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i"
-	rel="stylesheet">
-<link
-	href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext"
-	rel="stylesheet">
-
-<!-- //online-fonts -->
-</head>
 
 <body>
-	<!-- nav -->
-	<a href="#menu" class="menu-link"> <span>toggle menu</span>
-	</a>
-	<nav id="menu" class="panel">
-		<ul>
-			<li><a href="index.html">Home</a></li>
-			<li><a href="about.html">About</a></li>
-			<li><a href="services.html">Services</a></li>
-			<li><a href="gallery.html">Gallery</a></li>
-			<li><a href="typo.html">Typography</a></li>
-			<li><a href="contact.html" class="active">contact</a></li>
+	
 
-		</ul>
-	</nav>
-	<!-- //nav -->
-	<!-- banner -->
 	<div class="main position-relative">
 		<!-- logo -->
 		<h1 class="logo_wthree">
@@ -666,7 +616,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="footer-cpy text-center pt-5 mt-5">
 					<div class="copyrightbottom-w3ls-agile">
 						<p>
-							© 2018 Rambling. All Rights Reserved | Design by <a
+							� 2018 Rambling. All Rights Reserved | Design by <a
 								href="http://w3layouts.com/">W3layouts</a>
 						</p>
 
@@ -674,38 +624,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 			</div>
 		</div>
-	</footer>
-	<!-- //footer -->
 
-	<!-- js -->
-	<script th:src="@{/js/jquery-2.2.3.min.js}"></script>
-	<!-- //js -->
-	<!-- navigation -->
-	<script th:src="@{/js/menuFullpage.min.js}"></script>
-	<script th:src="@{/js/expert.js}"></script>
-	<!-- contact validation js -->
-	<script th:src="@{/js/form-validation.js}"></script>
-	<script th:src="@{/js/move-top.js}"></script>
-	<script th:src="@{/js/easing.js}"></script>
-	<script th:src="@{/js/SmoothScroll.min.js}"></script>
-	<!-- Bootstrap core JavaScript -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script th:src="@{/js/bootstrap.js}"></script>
-	<script th:src="@{/js/jquery.dataTables.min.js}"></script>
-	<script th:src="@{/js/dataTables.bootstrap4.min.js}"></script>
-	
-	<script>
-		addEventListener("load", function() {
-			setTimeout(hideURLbar, 0);
-		}, false);
-
-		function hideURLbar() {
-			window.scrollTo(0, 1);
-		}
-		$(document).ready(function() {
-			$('#example').DataTable();
-		});
-	</script>
 
 </body>
 </html>
