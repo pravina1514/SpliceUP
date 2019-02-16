@@ -85,90 +85,49 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<h2 class="tittle mb-xl-5 mb-4 text-center">
 				<span class="text-uppercase">Contact</span>Get In Touch
 			</h2>
-			<!-- <div class="container pt-sm-5">
-				<div class="address row mb-5">
-					<div class="col-lg-4 address-grid-w3l">
-						<div class="row address-info">
-							<div class="col-md-3 address-left text-center">
-								<i class="far fa-map"></i>
-							</div>
-							<div class="col-md-9 address-right text-left">
-								<h6 class="ad-info text-uppercase mb-2">Address</h6>
-								<p>California, USA</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 address-grid-w3l">
-						<div class="row address-info">
-							<div class="col-md-3 address-left text-center">
-								<i class="far fa-envelope"></i>
-							</div>
-							<div class="col-md-9 address-right text-left">
-								<h6 class="ad-info text-uppercase mb-2">Email</h6>
-								<p>
-									Email : <a href="mailto:example@email.com">
-										mail@example.com</a>
-								</p>
-							</div>
-
-						</div>
-					</div>
-					<div class="col-lg-4 address-grid-w3l">
-						<div class="row address-info">
-							<div class="col-md-3 address-left text-center">
-								<i class="fas fa-mobile-alt"></i>
-							</div>
-							<div class="col-md-9 address-right text-left">
-								<h6 class="ad-info text-uppercase mb-2">Phone</h6>
-								<p>+1 234 567 8901</p>
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
- -->
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-12 main_grid_contact">
 						<div class="form">
 							<h4 class="mb-4 text-left">Send us a message</h4>
-							<form action="#" method="post">
+							<form th:action="@{/event/createEvent}"
+								enctype="multipart/form-data" method="post">
 								<div class="form-group">
 									<label class="my-2">Name</label> <input class="form-control"
-										type="text" name="Name" placeholder="" required="">
-								</div>
-								<div class="form-group">
-									<label>Email</label> <input class="form-control" type="email"
-										name="Email" placeholder="" required="">
-								</div>
-								<div class="form-group">
-									<label>Start Date</label> <input class="form-control"
-										type="date" placeholder="" required="required">
-								</div>
-								<div class="form-group">
-									<label>End Date</label> <input class="form-control" type="date"
-										placeholder="" required="required">
+										type="text" name="name" placeholder="" required="">
 								</div>
 
-
-
+								<div class="form-group">
+									<label>Description</label> <input class="form-control"
+										type="text" name="description" placeholder="" required="">
+								</div>
 
 								<div class="form-group">
-									<label>Select City</label> <select class="form-control">
-										<option value="abc">abc</option>
-										<option value="def">def</option>
+									<label>Start Date</label> <input name="s_date"
+										class="form-control" type="date" placeholder=""
+										required="required">
+								</div>
+								<div class="form-group">
+									<label>End Date</label> <input name="e_date"
+										class="form-control" type="date" placeholder=""
+										required="required">
+								</div>
+								<div class="form-group">
+									<label>Select City</label> <select class="form-control"
+										name="city">     
+										<option th:each="i : ${cities}" th:value="${i.cid}"
+											th:text="${i.name}">    </option>
 									</select>
 								</div>
 
-
 								<div class="form-group">
 									<label>Event Image</label> <input class="form-control"
-										type="file" placeholder="" required="required">
+										type="file" placeholder="" name="eventImage"
+										required="required">
 								</div>
 								<div class="form-group">
-									<label>Message</label>
-									<textarea id="textarea" placeholder=""></textarea>
+									<label>Location</label>
+									<textarea id="textarea" name="location" placeholder=""></textarea>
 								</div>
 								<div class="input-group1">
 									<input class="form-control" type="submit" value="Submit">
