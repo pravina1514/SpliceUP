@@ -83,15 +83,6 @@ public class EventController {
 		return modelAndView;
 	}
 
-	@GetMapping(value = "/eventList")
-	public ModelAndView eventList() {
-
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("EventList");
-
-		return modelAndView;
-	}
-
 	@GetMapping(value = "/home")
 	public ModelAndView home() {
 
@@ -114,6 +105,7 @@ public class EventController {
 	public ModelAndView services() {
 
 		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("eventList", eventRepo.findAll());
 		modelAndView.setViewName("services");
 
 		return modelAndView;
