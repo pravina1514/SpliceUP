@@ -29,9 +29,13 @@ public class EventController {
 	CitiesRepository cityRepo;
 
 	@Autowired
+	UserMasterRepository userRepo;
+
+	
+	@Autowired
 	UserService service;
 
-	public static String uploadDir = "E:\\sts\\Workspace\\uploads";
+	public static String uploadDir = "G:\\proejct\\spliceup\\maven.1535556277078\\SpliceUp\\src\\main\\resources\\static\\images\\upload";
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -47,17 +51,31 @@ public class EventController {
 
 		return modelAndView;
 	}
+	
+	@GetMapping(value = "/adminrecord")
+	public ModelAndView adminrecord() {
 
+       ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("adminrecord");
+		modelAndView.addObject("Login", userRepo.findAll());
+
+		return modelAndView;
+	}
+	
+
+	
+
+	
 	@RequestMapping(value = "/createEvent", method = RequestMethod.POST)
 	public String createEvent(@ModelAttribute Event event, @RequestParam("eventImage") MultipartFile file) {
 		event.setEventHost(service.getLoggedInUser());
 		Path mpath = Paths.get(uploadDir, file.getOriginalFilename());
 		try {
 			java.nio.file.Files.write(mpath, file.getBytes());
+			event.setImage("/images/upload/"+file.getOriginalFilename());
 		} catch (Exception e) {
 			System.out.print(e);
 		}
-		event.setImage(mpath.toString());
 		eventRepo.save(event);
 
 		return "redirect:/event/services";
@@ -101,12 +119,24 @@ public class EventController {
 		return modelAndView;
 	}
 
+  
+	//@GetMapping(value = "/services")
+	//public ModelAndView services() {
+
+	//ModelAndView modelAndView = new ModelAndView();
+	//	modelAndView.addObject("eventList", eventRepo.findAll());
+	//	modelAndView.setViewName("services");
+
+	//	return modelAndView;
+	//}
+	
+	
 	@GetMapping(value = "/services")
 	public ModelAndView services() {
 
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("eventList", eventRepo.findAll());
 		modelAndView.setViewName("services");
+		modelAndView.addObject("contact", eventRepo.findAll());
 
 		return modelAndView;
 	}
@@ -119,5 +149,6 @@ public class EventController {
 
 		return modelAndView;
 	}
-
-}
+	
+	
+	}

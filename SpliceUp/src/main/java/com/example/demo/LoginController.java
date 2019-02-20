@@ -16,6 +16,8 @@ public class LoginController {
 	@Autowired
 	UserService service;
 
+	
+
 	@Autowired
 	private SecurityService securityService;
 
@@ -91,5 +93,13 @@ public class LoginController {
 		}
 
 	}
+	
 
+	
+
+	
+	
+	
+	
+	
 }
