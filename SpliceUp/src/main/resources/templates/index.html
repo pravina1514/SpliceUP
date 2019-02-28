@@ -5,28 +5,18 @@
     
     <body>  
 <div id="page" layout:fragment="content">
-		<div id="dynamicContent">
+<div id="dynamicContent">
 		
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             
      
-            <a class="navbar=brand" href="landing_page.html">
-            <img th:src="@{/images/logo.png}" class="logo" src=logo.png /> <div class="logo-name"><b>Splice Up</b></div></a> 
-        <!--<ul class="nav navbar-right">
-            <li >
-                <a  href="#">LOGIN</a>
-            </li>
-            <li >
-                <a href="#">SIGN UP</a>
-            </li>
-        </ul>-->
-            <div class="nav navbar-right">
-                <button class="gd-secondary-btn">
-                    <a href="login.html">LOGIN</a> </button>
-                <button class="gd-secondary-btn">
-<a href="signup.html">SIGN UP</a></button>
-            </div>
+            <a class="navbar=brand" href="/event/home">
+            <img th:src="@{/images/logo.png}" class="logo" src=logo.png /> 
+            <div class="logo-name"><b>Splice Up</b></div>
+            </a> 
+       
+       
             </div>
     </nav>
 
@@ -39,8 +29,10 @@
 					 It brings people together to do, explore, teach and learn the things that help them 
 					 come alive.</h6>
         <button class="tour">
-<a href="signup.html">Take a Tour</a></button>
+        <a href="/event/services">Take a Tour</a>
+        </button>
     </div>
+   </div>
    </div>
        
     </body>

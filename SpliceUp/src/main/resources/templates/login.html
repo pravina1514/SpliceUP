@@ -51,21 +51,24 @@
 
 						<div class="input-group">
 							<div th:if="${inValidInfo} == 'true'">Invalid Credentials.</div>
-							<span><i class="fa fa-envelope" aria-hidden="true"></i></span> <input
-								type="email" placeholder="Email" th:field="*{email}"
+							<span><i class="fa fa-envelope" aria-hidden="true"></i>Email</span> <input
+								type="email" placeholder="Email" th:field="*{email}" 
 								required="required">
 						</div>
 
 						<div class="input-group">
-							<span><i class="fa fa-lock" aria-hidden="true"></i></span> <input
+							<span><i class="fa fa-lock" aria-hidden="true"></i>Password</span> <input
 								type="Password" name="password" th:field="*{password}"
 								placeholder="Password" required="required">
 						</div>
 						<button class="btn btn-danger btn-block" type="submit">Login
-							Up</button>
+							</button>
 					</form>
 					<p class="account">
 						New user? Create Account <a href="/login/registration">Signup</a>
+					</p>
+					<p class="account">
+						Forgot Password? <a href="/login/forgotPassword">Reset Now</a>
 					</p>
 				</div>
 			</div>

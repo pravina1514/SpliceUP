@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html>
+	<!-- th:if="${userName=='abcd3@gmail.com'}" -->
 <head th:replace="header :: head"></head>
 <body>
 	<div class="container">
+		<span  th:text="${userName}"></span>
 		<a href="#menu" class="menu-link"> <span>toggle menu</span>
 		</a>
 		<nav id="menu" class="panel">
 			<ul>
-				<li><a href="index.html">Home</a></li>
-				<li><a href="about.html">About</a></li>
+				<li><a href="/event/home">Home</a></li>
+				<li><a href="/event/about">About</a></li>
 				<li><a href="/event/services">Events</a></li>
-				<li><a href="gallery.html">Gallery</a></li>
-				<li><a href="/event/adminrecord">AdminRecord</a></li>
-				
 				<li><a href="/event/createEvent">contact</a></li>
+				<span th:if="${userRole=='ROLE_ADMIN'}">
+				<li><a href="/admin/ar">Admin Record</a></li>
+				</span>
+				<li><a href="/login/doLogout">Logout</a></li>
+				
+				
 
 			</ul>
 		</nav>

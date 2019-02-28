@@ -31,11 +31,10 @@ public class EventController {
 	@Autowired
 	UserMasterRepository userRepo;
 
-	
 	@Autowired
 	UserService service;
 
-	public static String uploadDir = "G:\\proejct\\spliceup\\maven.1535556277078\\SpliceUp\\src\\main\\resources\\static\\images\\upload";
+	public static String uploadDir = "E:\\sts\\Workspace\\maven.1535549954053\\SpliceUp\\src\\main\\resources\\static\\images\\upload";
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -51,28 +50,14 @@ public class EventController {
 
 		return modelAndView;
 	}
-	
-	@GetMapping(value = "/adminrecord")
-	public ModelAndView adminrecord() {
 
-       ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("adminrecord");
-		modelAndView.addObject("Login", userRepo.findAll());
-
-		return modelAndView;
-	}
-	
-
-	
-
-	
 	@RequestMapping(value = "/createEvent", method = RequestMethod.POST)
 	public String createEvent(@ModelAttribute Event event, @RequestParam("eventImage") MultipartFile file) {
 		event.setEventHost(service.getLoggedInUser());
 		Path mpath = Paths.get(uploadDir, file.getOriginalFilename());
 		try {
 			java.nio.file.Files.write(mpath, file.getBytes());
-			event.setImage("/images/upload/"+file.getOriginalFilename());
+			event.setImage("/images/upload/" + file.getOriginalFilename());
 		} catch (Exception e) {
 			System.out.print(e);
 		}
@@ -80,25 +65,6 @@ public class EventController {
 
 		return "redirect:/event/services";
 
-	}
-
-	@GetMapping(value = "/hostEvent")
-	public ModelAndView hostEvent() {
-
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("EventHostForm");
-
-		return modelAndView;
-
-	}
-
-	@GetMapping(value = "/eventDetail")
-	public ModelAndView eventDetail() {
-
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("EventDetails");
-
-		return modelAndView;
 	}
 
 	@GetMapping(value = "/home")
@@ -119,18 +85,6 @@ public class EventController {
 		return modelAndView;
 	}
 
-  
-	//@GetMapping(value = "/services")
-	//public ModelAndView services() {
-
-	//ModelAndView modelAndView = new ModelAndView();
-	//	modelAndView.addObject("eventList", eventRepo.findAll());
-	//	modelAndView.setViewName("services");
-
-	//	return modelAndView;
-	//}
-	
-	
 	@GetMapping(value = "/services")
 	public ModelAndView services() {
 
@@ -141,14 +95,22 @@ public class EventController {
 		return modelAndView;
 	}
 
-	@GetMapping(value = "/gallery")
-	public ModelAndView gallery() {
+	@GetMapping(value = "/eventDetail")
+	public ModelAndView eventDetail() {
 
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("gallery");
+		modelAndView.setViewName("eventdetail");
 
 		return modelAndView;
 	}
-	
-	
+
+	@GetMapping(value = "/chat1")
+	public ModelAndView chat() {
+
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("chat1");
+
+		return modelAndView;
 	}
+
+}

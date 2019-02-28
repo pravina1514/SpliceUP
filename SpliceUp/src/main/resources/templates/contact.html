@@ -1,74 +1,15 @@
-ï»¿
-<!--Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-
-<head>
-<title>Rambling A Travel Category Bootstrap Responsive website
-	Template | Contact :: w3layouts</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta charset="utf-8" />
-<meta name="keywords"
-	content="Rambling Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
-<script>
-	addEventListener("load", function() {
-		setTimeout(hideURLbar, 0);
-	}, false);
-
-	function hideURLbar() {
-		window.scrollTo(0, 1);
-	}
-</script>
-<!-- Custom Theme files -->
-<link th:href="@{/css/bootstrap.css}" type="text/css" rel="stylesheet"
-	media="all">
-<link th:href="@{/css/style1.css}" type="text/css" rel="stylesheet"
-	media="all">
-<link th:href="@{/css/menufullpage.css}" rel="stylesheet">
-<!-- font-awesome icons -->
-<link th:href="@{/css/fontawesome-all.min.css}" rel="stylesheet">
-<!-- //Custom Theme files -->
-<!-- online-fonts -->
-<link
-	href="//fonts.googleapis.com/css?family=IBM+Plex+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i"
-	rel="stylesheet">
-<link
-	href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext"
-	rel="stylesheet">
-
-<!-- //online-fonts -->
-</head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="default">
 
 <body>
-	<!-- nav -->
-	<a href="#menu" class="menu-link"> <span>toggle menu</span>
-	</a>
-	<nav id="menu" class="panel">
-		<ul>
-			<li><a href="index.html">Home</a></li>
-			<li><a href="about.html">About</a></li>
-			<li><a href="services.html">Services</a></li>
-			<li><a href="gallery.html">Gallery</a></li>
-			<li><a href="events">Event</a></li>
-			<li><a href="contact.html" class="active">contact</a></li>
-
-		</ul>
-	</nav>
-	<!-- //nav -->
-	<!-- banner -->
+    
+    <div id="page" layout:fragment="content">
+		<div id="dynamicContent">
 	<div class="main position-relative">
 		<!-- logo -->
-		<h1 class="logo_wthree">
-			<a href="index.html"> Rambling </a>
-		</h1>
+		
 		<!-- //logo -->
 		<!-- banner slider -->
 		<section class="inner-banner-agile"></section>
@@ -115,7 +56,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<div class="form-group">
 									<label>Select City</label> <select class="form-control" name="city">
 									<option th:each="i : ${cities}" th:value="${i.cid}"
-											th:text="${i.name}">Â Â Â Â </option>  
+											th:text="${i.name}">    </option>  
 									</select>
 								</div>
 
@@ -137,128 +78,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 			</div>
 		</div>
-	</section>
-	<!-- //contact -->
-
-	<!--footer-->
-	<footer class="py-lg-5 py-3">
-		<div class="container">
-			<div class="inner-sec-w3ls-agileits py-lg-5 py-3">
-				<div class="row">
-					<div class="col-lg-4 footer-grid1-wthree-agileits text-left">
-						<h3 class="mb-4">About Us</h3>
-						<p>Lorem Ipsum is simply dummy text of the printing and
-							typesetting industry.Lorem Ipsum is simply dummy text of the
-							printing and typesetting industry.</p>
-						<div class="footer-social mt-4">
-							<div class="copyrighttop">
-
-								<ul class="social_list1 text-left">
-
-									<li><a href="#" class="facebook1 "> <i
-											class="fab fa-facebook-f"></i>
-
-									</a></li>
-									<li><a href="#" class="twitter2 mx-2"> <i
-											class="fab fa-twitter"></i>
-
-									</a></li>
-									<li><a href="#" class="dribble3"> <i
-											class="fab fa-dribbble"></i>
-									</a></li>
-
-								</ul>
-
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 footer-grid1-wthree-agileits text-left">
-						<h3 class="mb-4">Locate Us</h3>
-						<ul class="footer-bottom-list">
-							<li><span class="fas fa-map-marker-alt"></span> 3481 Honey
-								Street <span> California, USA </span></li>
-							<li><span class="fas fa-envelope"></span> <a
-								href="mailto:name@example.com"> mail@example.com</a></li>
-							<li><span class="fas fa-phone"></span> +143 367 436 2049</li>
-							<li><span class="fas fa-fax"></span> +166 367 808 5055</li>
-							<li><span class="fas fa-globe"></span> <a href="#">
-									www.websitename.com</a></li>
-
-						</ul>
-					</div>
-					<div class="col-lg-4 footer-grid text-left">
-						<div class="tech-btm">
-							<h3 class="mb-4">Latest News</h3>
-							<div class="blog-grids row mb-3">
-								<div class="col-sm-4 pr-0 blog-grid-left">
-									<a href="about.html"> <img src="images/g1.jpg"
-										class="img-fluid" alt="">
-									</a>
-								</div>
-								<div class="col-sm-8 blog-grid-right">
-
-									<h5>
-										<a href="about.html">Pellentesque dui, non felis. Maecenas
-											male non felis </a>
-									</h5>
-									<div class="sub-meta">
-										<span> <i class="far fa-clock"></i> 20 Sep, 2018
-										</span>
-									</div>
-								</div>
-
-							</div>
-
-							<div class="blog-grids row mb-3">
-								<div class="col-sm-4 pr-0 blog-grid-left">
-									<a href="about.html"> <img src="images/g4.jpg"
-										class="img-fluid" alt="">
-									</a>
-								</div>
-								<div class="col-sm-8 blog-grid-right">
-
-									<h5>
-										<a href="about.html">Pellentesque dui, non felis. Maecenas
-											male non felis </a>
-									</h5>
-									<div class="sub-meta">
-										<span> <i class="far fa-clock"></i> 23 Sep, 2018
-										</span>
-									</div>
-								</div>
-
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- footer -->
-				<div class="footer-cpy text-center pt-5 mt-5">
-					<div class="copyrightbottom-w3ls-agile">
-						<p>
-							Â© 2018 Rambling. All Rights Reserved | Design by <a
-								href="http://w3layouts.com/">W3layouts</a>
-						</p>
-
-					</div>
-				</div>
-			</div>
 		</div>
-	</footer>
-	<!-- //footer -->
+		</div>
 
-	<!-- js -->
-	<script th:src="@{/js/jquery-2.2.3.min.js}"></script>
-	<!-- //js -->
-	<!-- navigation -->
-	<script th:src="@{/js/menuFullpage.min.js}"></script>
-	<script th:src="@{/js/expert.js}"></script>
-	<!-- contact validation js -->
-	<script th:src="@{/js/form-validation.js}"></script>
-	<script th:src="@{/js/move-top.js}"></script>
-	<script th:src="@{/js/easing.js}"></script>
-	<script th:src="@{/js/SmoothScroll.min.js}"></script>
-	<!-- Bootstrap core JavaScript -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script th:src="@{/js/bootstrap.js}"></script>
+
+	
 </body>
 </html>

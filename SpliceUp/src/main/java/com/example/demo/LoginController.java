@@ -1,6 +1,11 @@
 package com.example.demo;
 
+import java.util.UUID;
+
+import javax.mail.MessagingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +21,8 @@ public class LoginController {
 	@Autowired
 	UserService service;
 
-	
+	@Autowired
+	private SmtpMailSender smtpMailSender;
 
 	@Autowired
 	private SecurityService securityService;
@@ -93,13 +99,52 @@ public class LoginController {
 		}
 
 	}
-	
 
-	
+	@RequestMapping(value = "/doLogout", method = RequestMethod.GET)
+	public String doLogout() {
+		SecurityContextHolder.getContext().setAuthentication(null);
+		return "redirect:/event/services";
 
-	
-	
-	
-	
-	
+	}
+
+	@GetMapping(value = "/forgotPassword")
+	public ModelAndView fp() {
+
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("forgotpassword");
+		modelAndView.addObject("userNotFound", "false");
+		modelAndView.addObject("emailSent", "false");
+
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "/generatePassword", method = RequestMethod.POST)
+	public String fp(@ModelAttribute Login user, Model model) {
+		Login existingUser = service.findUserByEmail(user.getEmail());
+		if (existingUser == null) {
+
+			model.addAttribute("userNotFound", "true");
+			model.addAttribute("emailSent", "false");
+
+		}
+
+		else {
+			try {
+				String uuid = UUID.randomUUID().toString();
+				existingUser.setPassword(uuid);
+				smtpMailSender.send(user.getEmail(), "New Password", "Your temporary password is :" + uuid);
+				service.saveUser(existingUser);
+				model.addAttribute("userNotFound", "false");
+				model.addAttribute("emailSent", "true");
+
+			} catch (MessagingException e) {
+				model.addAttribute("userNotFound", "true");
+				model.addAttribute("emailSent", "false");
+
+			}
+
+		}
+		return "forgotPassword";
+
+	}
 }

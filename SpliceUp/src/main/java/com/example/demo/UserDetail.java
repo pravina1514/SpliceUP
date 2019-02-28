@@ -27,11 +27,9 @@ public class UserDetail {
 	private Long mobile_no;
 	@Column(name = "name")
 	private String name;
-	
+
 	@Column(name = "gender")
 	private String gender;
-	
-	
 
 	@Column(name = "role")
 	private String role;
