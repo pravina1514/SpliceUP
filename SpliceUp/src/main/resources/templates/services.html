@@ -42,6 +42,7 @@
 									</h5>
 
 									<br>
+								<td>Hosted By: <span th:text="${i.eventHost.userDetail.name}"></span></td>										
 									<br>
 									<tr>
 										<td>Starting Date: <span th:text="${i.s_date}"></span></td>
@@ -56,11 +57,12 @@
 									<tr>
 										<p class="card-text mb-3">
 											<i class="fas fa-map-marker pr-2"></i> <span
-												th:text="${i.location}"></span>
+												th:text="${i.city.name}"></span>
 										</p>
 									</tr>
 
-									<a href="#" class="btn btn-primary">JOIN</a>
+				
+								<span th:if="${userName!= i.eventHost.email}">	<a href="#" class="btn btn-primary">JOIN</a></span>
 									<a href="#" class="btn btn-primary">VIEW</a>
 							</div>
 						</div>
