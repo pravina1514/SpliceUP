@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="default">
+<body>
+	<div id="page" layout:fragment="content" class=" eventdetail">
+		<div id="dynamicContent">
+		
+		<div class="main position-relative">
+		<!-- logo -->
+		
+		<h1 class="logo_wthree">
+			<a href="index.html"> Rambling </a>
+		</h1>
+		<!-- //logo -->
+		<!-- banner slider -->
+		<section class="inner-banner-agile"></section>
+		<!-- //banner slider -->
+	</div>
+		
+			<div class="main position-relative">
+			
+				<h1 class="logo_wthree" >
+					<h1 class="card-title" align="center">
+									<span th:text="${contact.name}"></span>
+					</h1>
+
+				</h1>
+				<!-- //logo -->
+				<!-- banner slider -->
+				
+				<section >
+				
+				<div class="row pt-5 eventdetail-data">
+				
+					<div class="col-6 event-img">
+					
+					<img th:src="${contact.image}" class="img-fluid"
+										alt="Card image cap">
+					</div>
+				
+					<div class="col-6 event-data">
+						<p>Description:<span th:text="${contact.description}"></span> 	</p>
+						<p>Starting Date:<span th:text="${contact.s_date}"></span></p>
+						<p>Ending Date:<span th:text="${contact.e_date}"></span></p>
+					</div>
+					<div class="col-12 event-comment">
+					<div class="form-group">
+						<label class="event-label">Comments</label>
+					   <textarea name="news_content" rows="5" cols="150"  form="myform">
+					        ...
+					    </textarea>
+						</div>
+					</div>
+					
+				</div>
+				<div class="input-group1 main-event-button" >
+			<button class="btn btn-danger btn-block event-button" type="submit">Post Comment</button>
+			</div>
+		
+				</section>
+				<!-- //banner slider -->
+			</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</div>
+	</div>
+</body>
+</html>

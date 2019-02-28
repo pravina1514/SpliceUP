@@ -19,6 +19,24 @@
 		window.scrollTo(0, 1);
 	}
 </script>
+
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+
+
 <!-- //Meta-Tags -->
 
 <!-- css files -->
@@ -54,30 +72,34 @@
 					<p>Vestibulum est nulla, fermentum eget ipsum euismod et,
 						tincidunt at dui dolor sit.</p>
 					<form th:action="@{/login/registration}" th:object="${user}"
-						method="post">
+						method="post" id="registration_form">
 						<div class="input-group">
 							<span><i class="fa fa-user" aria-hidden="true"></i></span> <input
 								type="text" th:field="*{userDetail.name}"
-								placeholder="Full Name" required="required">
+								placeholder="Full Name" id="usernames" required="required">
+							<h5 id="usercheck"></h5>
 						</div>
 						<div class="input-group">
 							<div th:if="${userexists} == 'true'">Email id already
 								exists.</div>
 
 							<span><i class="fa fa-envelope" aria-hidden="true"></i></span> <input
-								type="email" placeholder="Email" th:field="*{email}"
-								required="required">
+								type="text" placeholder="Email" th:field="*{email}"
+								id="useremail">
+							<h5 id="emailcheck"></h5>
 
 						</div>
 						<div class="input-group">
 							<span><i class="fa fa-phone" aria-hidden="true"></i></span> <input
 								type="text" th:field="*{userDetail.mobile_no}"
-								placeholder="Contact Number" required="required">
+								placeholder="Contact Number" id="usermobile">
+							<h5 id="mobilecheck"></h5>
 						</div>
 						<div class="input-group">
 							<span><i class="fa fa-lock" aria-hidden="true"></i></span> <input
 								type="Password" name="password" th:field="*{password}"
-								placeholder="Password" required="required">
+								placeholder="Password" id="userpassword">
+							<h5 id="passcheck"></h5>
 						</div>
 						<button class="btn btn-danger btn-block" type="submit">Sign
 							Up</button>
@@ -89,8 +111,50 @@
 			</div>
 			<!-- //main content -->
 		</div>
-	
+
 	</div>
+
+	<script th:src="@{/js/jquery-2.2.3.min.js}"></script>
+	<script
+		src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#registration_form").validate({
+				rules : {
+					'userDetail.name' :
+						{
+						required : true
+					//	minlength: jQuery.format("Enter at least (2) characters"),
+				      //  maxlength:jQuery.format("First name too long more than (80) characters"),
+				       // lettersonly:jQuery.format("letters only mate")
+						
+						},
+					lastname : 'required',
+					"userDetail.mobile_no" : {
+						number: true,
+						minlength : 10,
+						maxlength : 10,
+						required:true
+					},
+					password: {
+				            required: true,
+				            minlength: 5
+				        },
+					email : {
+						required : true,
+						email : true,//add an email rule that will ensure the value entered is valid email id.
+						maxlength : 555
+					}
+
+				}
+			});
+
+		});
+	</script>
+
+
+
 
 </body>
 </html>

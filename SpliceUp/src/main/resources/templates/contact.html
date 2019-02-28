@@ -3,89 +3,235 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="default">
 
+
+<head>
+<title>Rambling A Travel Category Bootstrap Responsive website
+	Template | Contact :: w3layouts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8" />
+<meta name="keywords"
+	content="Rambling Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+
+
+
+
+
+
+</head>
+
 <body>
-    
-    <div id="page" layout:fragment="content">
+	<div id="page" layout:fragment="content">
 		<div id="dynamicContent">
-	<div class="main position-relative">
-		<!-- logo -->
-		
-		<!-- //logo -->
-		<!-- banner slider -->
-		<section class="inner-banner-agile"></section>
-		<!-- //banner slider -->
-	</div>
-	<!-- banner -->
-	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-		<li class="breadcrumb-item active">Contact</li>
-	</ol>
-	<!-- contact -->
-	<section class="banner-bottom-w3ls pt-lg-5 pt-md-3 pt-3">
-		<div class="inner-sec-wthreelayouts pt-md-5 pt-md-3 pt-3">
-			<h2 class="tittle mb-xl-5 mb-4 text-center">
-				<span class="text-uppercase">Contact</span>Get In Touch
-			</h2>
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-md-12 main_grid_contact">
-						<div class="form">
-							<h4 class="mb-4 text-left">Send us a message</h4>
-							<form th:action="@{/event/createEvent}"
-								enctype="multipart/form-data" method="post">
-								<div class="form-group">
-									<label class="my-2">Name</label> <input class="form-control"
-										type="text" name="name" placeholder="" required>
-								</div>
+			<a href="#menu" class="menu-link"> <span>toggle menu</span>
+			</a>
 
-								<div class="form-group">
-									<label>Description</label> <input class="form-control"
-										type="text" name="description" placeholder="" required>
-								</div>
+			<!-- //nav -->
+			<!-- banner -->
+			<div class="main position-relative">
+				<!-- logo -->
+				<h1 class="logo_wthree">
+					<a href="index.html"> Rambling </a>
+				</h1>
+				<!-- //logo -->
+				<!-- banner slider -->
+				<section class="inner-banner-agile"></section>
+				<!-- //banner slider -->
+			</div>
+			<!-- banner -->
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+				<li class="breadcrumb-item active">Contact</li>
+			</ol>
+			<!-- contact -->
+			<section class="banner-bottom-w3ls pt-lg-5 pt-md-3 pt-3">
+				<div class="inner-sec-wthreelayouts pt-md-5 pt-md-3 pt-3">
+					<h2 class="tittle mb-xl-5 mb-4 text-center">
+						<span class="text-uppercase">Contact</span>Get In Touch
+					</h2>
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-md-12 main_grid_contact">
+								<div class="form">
+									<h4 class="mb-4 text-left">Send us a message</h4>
+									<form th:action="@{/event/createEvent}"
+										enctype="multipart/form-data" method="post">
+										<div class="form-group">
+											<label class="my-2">Name</label> <input class="form-control"
+												type="text" name="name" placeholder="" required>
 
-								<div class="form-group">
-									<label>Start Date</label> <input name="s_date"
+										</div>
+
+										<div class="form-group">
+											<label>Description</label> <input class="form-control"
+												type="text" name="description" placeholder="" required>
+										</div>
+
+
+
+
+										<div>
+											<label>Start Date</label> <input class="form-control"
+												type="date" id="StartDate">
+										</div>
+
+										<div>
+											<label>End Date</label> <input class="form-control"
+												type="date" id="EndDate">
+										</div>
+
+
+
+
+										<!--<div class="form-group">
+									<label>Start Date</label> <input name="s_date" id="start"
 										class="form-control" type="date" placeholder=""
 										required="required">
 								</div>
 								<div class="form-group">
-									<label>End Date</label> <input name="e_date"
+									<label>End Date</label> <input name="e_date" id="end"
 										class="form-control" type="date" placeholder=""
-										required="required">
-								</div>
-								<div class="form-group">
-									<label>Select City</label> <select class="form-control" name="city">
-									<option th:each="i : ${cities}" th:value="${i.cid}"
-											th:text="${i.name}">    </option>  
-									</select>
-								</div>
+										required="required" >
+								</div>  -->
+										<div class="form-group">
+											<label>Select City</label> <select class="form-control"
+												name="city">
+												<option th:each="i : ${cities}" th:value="${i.cid}"
+													th:text="${i.name}">Â Â Â Â </option>
+											</select>
+										</div>
 
-								<div class="form-group">
-									<label>Event Image</label> <input class="form-control"
-										type="file" placeholder="" name="eventImage"
-										required="required">
+										<div class="form-group">
+											<label>Event Image</label> <input class="form-control"
+												type="file" placeholder="" name="eventImage"
+												required="required">
+										</div>
+										<div class="form-group">
+											<label>Location</label>
+											<textarea id="textarea" name="location" placeholder=""></textarea>
+										</div>
+										<div class="input-group1">
+											<input class="form-control" type="submit" value="Submit">
+										</div>
+									</form>
 								</div>
-								<div class="form-group">
-									<label>Location</label>
-									<textarea id="textarea" name="location" placeholder=""></textarea>
-								</div>
-								
-								<div class="form-group" th:text="${userName}">
-									<label>Host Id</label>
-								</div>
-								<div class="input-group1">
-									<input class="form-control" type="submit" value="Submit">
-								</div>
-							</form>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-		</div>
-		</div>
+			</section>
+			<!-- //contact -->
+
+			<!--footer-->
+			<footer class="py-lg-5 py-3">
+				<div class="container">
+					<div class="inner-sec-w3ls-agileits py-lg-5 py-3">
+						<div class="row">
+							<div class="col-lg-4 footer-grid1-wthree-agileits text-left">
+								<h3 class="mb-4">About Us</h3>
+								<p>Lorem Ipsum is simply dummy text of the printing and
+									typesetting industry.Lorem Ipsum is simply dummy text of the
+									printing and typesetting industry.</p>
+								<div class="footer-social mt-4">
+									<div class="copyrighttop">
+
+										<ul class="social_list1 text-left">
+
+											<li><a href="#" class="facebook1 "> <i
+													class="fab fa-facebook-f"></i>
+
+											</a></li>
+											<li><a href="#" class="twitter2 mx-2"> <i
+													class="fab fa-twitter"></i>
+
+											</a></li>
+											<li><a href="#" class="dribble3"> <i
+													class="fab fa-dribbble"></i>
+											</a></li>
+
+										</ul>
+
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4 footer-grid1-wthree-agileits text-left">
+								<h3 class="mb-4">Locate Us</h3>
+								<ul class="footer-bottom-list">
+									<li><span class="fas fa-map-marker-alt"></span> 3481 Honey
+										Street <span> California, USA </span></li>
+									<li><span class="fas fa-envelope"></span> <a
+										href="mailto:name@example.com"> mail@example.com</a></li>
+									<li><span class="fas fa-phone"></span> +143 367 436 2049</li>
+									<li><span class="fas fa-fax"></span> +166 367 808 5055</li>
+									<li><span class="fas fa-globe"></span> <a href="#">
+											www.websitename.com</a></li>
+
+								</ul>
+							</div>
+							<div class="col-lg-4 footer-grid text-left">
+								<div class="tech-btm">
+									<h3 class="mb-4">Latest News</h3>
+									<div class="blog-grids row mb-3">
+										<div class="col-sm-4 pr-0 blog-grid-left">
+											<a href="about.html"> <img src="images/g1.jpg"
+												class="img-fluid" alt="">
+											</a>
+										</div>
+										<div class="col-sm-8 blog-grid-right">
+
+											<h5>
+												<a href="about.html">Pellentesque dui, non felis.
+													Maecenas male non felis </a>
+											</h5>
+											<div class="sub-meta">
+												<span> <i class="far fa-clock"></i> 20 Sep, 2018
+												</span>
+											</div>
+										</div>
+
+									</div>
+
+									<div class="blog-grids row mb-3">
+										<div class="col-sm-4 pr-0 blog-grid-left">
+											<a href="about.html"> <img src="images/g4.jpg"
+												class="img-fluid" alt="">
+											</a>
+										</div>
+										<div class="col-sm-8 blog-grid-right">
+
+											<h5>
+												<a href="about.html">Pellentesque dui, non felis.
+													Maecenas male non felis </a>
+											</h5>
+											<div class="sub-meta">
+												<span> <i class="far fa-clock"></i> 23 Sep, 2018
+												</span>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- footer -->
+					</div>
+				</div>
+			</footer>
+			<!-- //footer -->
 
 
-	
+
+		</div>
+	</div>
 </body>
+
+
+
+
+
+
+
+
+
+
 </html>
