@@ -113,20 +113,25 @@ public class EventController {
 	public ModelAndView services(@PathVariable Long eventId) {
 		Event event = eventRepo.findById(eventId).get();
 		List<Participant> eventParti = participantsRepo.findByEvent(event);
+
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("eventDetails");
-		modelAndView.addObject("contact", eventRepo.findById(eventId).get());
+		modelAndView.addObject("contact", event);
+		modelAndView.addObject("entries", eventParti);
 
 		return modelAndView;
 	}
 
-	/*
-	 * @GetMapping(value = "/plist") public ModelAndView plist() { List<Participant>
-	 * user = participantsRepo.findByUser(user); ModelAndView modelAndView = new
-	 * ModelAndView(); modelAndView.setViewName("plist");
-	 * 
-	 * return modelAndView; }
-	 */
+	@GetMapping(value = "/plist")
+	public ModelAndView plist() {
+		Login u = service.getLoggedInUser();
+		List<Participant> user = participantsRepo.findByUser(u);
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("plist");
+		modelAndView.addObject("eve", user);
+
+		return modelAndView;
+	}
 
 	@RequestMapping(value = "/takePart/{eventId}", method = RequestMethod.GET)
 	public String takePart(@PathVariable Long eventId) {
