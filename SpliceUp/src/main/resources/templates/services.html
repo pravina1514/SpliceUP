@@ -63,7 +63,7 @@
 									alt="Card image cap">
 							</div>
 
-							<div class="col-5">
+							<div class="col-5 service-btn-list">
 								<h1 class="card-title" align="center">
 									<span th:text="${i.name}"></span>
 									</h5>
@@ -88,10 +88,20 @@
 										</p>
 									</tr>
 
+				      
+				      	<a href="#" class="btn btn-primary btn-join" th:if="${userName!= i.eventHost.email}">JOIN</a>
+				        <a th:href="@{'/event/services/'+ ${i.eid}}" class="btn btn-primary">VIEW</a>
+				          
 				
+<<<<<<< HEAD
 								<span th:if="${userName!= i.eventHost.email}">	
 									<a th:href="@{'/event/takePart/'+${i.eid}}" class="btn btn-primary">JOIN</a>
 										 <a th:href="@{'/event/services/'+${i.eid}}" class="btn btn-primary">VIEW</a>
+=======
+								
+							<!--  	<a href="#" class="btn btn-primary">VIEW</a> -->
+								
+>>>>>>> branch 'master' of https://github.com/rasheee03/spliceup.git
 							</div>
 						</div>
 					</div>
