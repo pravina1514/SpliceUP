@@ -38,6 +38,9 @@ public class EventController {
 
 	@Autowired
 	ParticipantRepository participantsRepo;
+	
+	@Autowired
+	CommentRepository commentRepo;
 
 	public static String uploadDir = "E:\\sts\\Workspace\\maven.1535549954053\\SpliceUp\\src\\main\\resources\\static\\images\\upload";
 
@@ -113,11 +116,13 @@ public class EventController {
 	public ModelAndView services(@PathVariable Long eventId) {
 		Event event = eventRepo.findById(eventId).get();
 		List<Participant> eventParti = participantsRepo.findByEvent(event);
-
+		List<Comment> eventComments=commentRepo.findByEvent(event);
+		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("eventDetails");
 		modelAndView.addObject("contact", event);
 		modelAndView.addObject("entries", eventParti);
+		modelAndView.addObject("eventComments", eventComments);
 
 		return modelAndView;
 	}
@@ -144,6 +149,17 @@ public class EventController {
 		p.setUser(user);
 		participantsRepo.save(p);
 		return "redirect:/event/services";
+
+	}
+
+	@RequestMapping(value = "/postComment", method = RequestMethod.POST)
+	public String createEvent(@ModelAttribute Comment comment) {
+		Event event = eventRepo.findById(comment.getEvent().getEid()).get();
+		Login user = service.getLoggedInUser();
+		comment.setUser(user);
+		comment.setEvent(event);
+		commentRepo.save(comment);
+		return "redirect:/event/services/" + event.getEid();
 
 	}
 }

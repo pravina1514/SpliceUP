@@ -10,11 +10,10 @@
 
 			<div class="main position-relative">
 				<!-- logo -->
-				<h1 class="logo_wthree">
-				</h1>
-				
+				<h1 class="logo_wthree"></h1>
+
 				<section class="inner-banner-agile"></section>
-				
+
 			</div>
 			<!-- banner -->
 			<ol class="breadcrumb">
@@ -27,40 +26,40 @@
 					<h2 class="tittle mb-xl-5 mb-4 text-center">
 						<span class="text-uppercase"></span> Upcoming Events
 					</h2>
-<div>
+					<div>
 
-<div><textarea value="location" hint="location"></textarea></div>
+						<div>
+							<textarea value="location" hint="location"></textarea>
+						</div>
 
-<div class="form-group">
-			<label>Select City</label> 
-			<select  name="city">
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					
-			</select>
-</div>
+						<div class="form-group">
+							<label>Select City</label> <select name="city">
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
 
-<div>
-<form>
-  <input type="date" >
+							</select>
+						</div>
 
-</form>
+						<div>
+							<form>
+								<input type="date">
 
-</div>
+							</form>
 
-
-
+						</div>
 
 
 
-</div>
+
+
+
+					</div>
 
 					<div class="container">
 						<div class="row pt-5" th:each="i : ${contact}">
 							<div class="col-6">
-								<img th:src="${i.image}" class="img-fluid"
-									alt="Card image cap">
+								<img th:src="${i.image}" class="img-fluid" alt="Card image cap">
 							</div>
 
 							<div class="col-5 service-btn-list">
@@ -69,18 +68,16 @@
 									</h5>
 
 									<br>
-								<td>Hosted By: <span th:text="${i.eventHost.userDetail.name}"></span></td>										
-									<br>
+									<td>Hosted By: <span
+										th:text="${i.eventHost.userDetail.name}"></span></td> <br>
 									<tr>
 										<td>Starting Date: <span th:text="${i.s_date}"></span></td>
 									</tr>
-									<br>
-									<br>
+									<br> <br>
 									<tr>
 										<td>Ending Date: <span th:text="${i.e_date}"></span></td>
 									</tr>
-									<br>
-									<br>
+									<br> <br>
 									<tr>
 										<p class="card-text mb-3">
 											<i class="fas fa-map-marker pr-2"></i> <span
@@ -88,26 +85,18 @@
 										</p>
 									</tr>
 
-				      
-				      	<a href="#" class="btn btn-primary btn-join" th:if="${userName!= i.eventHost.email}">JOIN</a>
-				        <a th:href="@{'/event/services/'+ ${i.eid}}" class="btn btn-primary">VIEW</a>
-				          
-				
-<<<<<<< HEAD
-								<span th:if="${userName!= i.eventHost.email}">	
-									<a th:href="@{'/event/takePart/'+${i.eid}}" class="btn btn-primary">JOIN</a>
-										 <a th:href="@{'/event/services/'+${i.eid}}" class="btn btn-primary">VIEW</a>
-=======
-								
-							<!--  	<a href="#" class="btn btn-primary">VIEW</a> -->
-								
->>>>>>> branch 'master' of https://github.com/rasheee03/spliceup.git
+
+									<span th:if="${userName!= i.eventHost.email}"> <a
+										th:href="@{'/event/takePart/'+${i.eid}}"
+										class="btn btn-primary">JOIN</a></span> <a
+										th:href="@{'/event/services/'+${i.eid}}"
+										class="btn btn-primary">VIEW</a>
 							</div>
 						</div>
 					</div>
-					</div>
+				</div>
 			</section>
-			
+
 		</div>
 	</div>
 
