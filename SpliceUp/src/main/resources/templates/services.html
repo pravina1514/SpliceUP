@@ -36,7 +36,7 @@
 									alt="Card image cap">
 							</div>
 
-							<div class="col-5">
+							<div class="col-5 service-btn-list">
 								<h1 class="card-title" align="center">
 									<span th:text="${i.name}"></span>
 									</h5>
@@ -61,9 +61,14 @@
 										</p>
 									</tr>
 
+				      
+				      	<a href="#" class="btn btn-primary btn-join" th:if="${userName!= i.eventHost.email}">JOIN</a>
+				        <a th:href="@{'/event/services/'+ ${i.eid}}" class="btn btn-primary">VIEW</a>
+				          
 				
-								<span th:if="${userName!= i.eventHost.email}">	<a href="#" class="btn btn-primary">JOIN</a></span>
-									<a href="#" class="btn btn-primary">VIEW</a>
+								
+							<!--  	<a href="#" class="btn btn-primary">VIEW</a> -->
+								
 							</div>
 						</div>
 					</div>
