@@ -4,6 +4,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -35,11 +36,32 @@ public class EventController {
 	@Autowired
 	UserService service;
 
+	@Autowired
+	ParticipantRepository participantsRepo;
+
 	public static String uploadDir = "E:\\sts\\Workspace\\maven.1535549954053\\SpliceUp\\src\\main\\resources\\static\\images\\upload";
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true));
+	}
+
+	@GetMapping(value = "/home")
+	public ModelAndView home() {
+
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("index");
+
+		return modelAndView;
+	}
+
+	@GetMapping(value = "/about")
+	public ModelAndView about() {
+
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("about");
+
+		return modelAndView;
 	}
 
 	@GetMapping(value = "/createEvent")
@@ -68,39 +90,12 @@ public class EventController {
 
 	}
 
-	@GetMapping(value = "/home")
-	public ModelAndView home() {
-
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("index");
-
-		return modelAndView;
-	}
-
-	@GetMapping(value = "/about")
-	public ModelAndView about() {
-
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("about");
-
-		return modelAndView;
-	}
-
 	@GetMapping(value = "/services")
 	public ModelAndView services() {
 
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("services");
 		modelAndView.addObject("contact", eventRepo.findAll());
-
-		return modelAndView;
-	}
-
-	@GetMapping(value = "/eventDetail")
-	public ModelAndView eventDetail() {
-
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("eventdetail");
 
 		return modelAndView;
 	}
@@ -113,15 +108,37 @@ public class EventController {
 
 		return modelAndView;
 	}
+
 	@GetMapping(value = "/services/{eventId}")
 	public ModelAndView services(@PathVariable Long eventId) {
-
+		Event event = eventRepo.findById(eventId).get();
+		List<Participant> eventParti = participantsRepo.findByEvent(event);
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("eventDetail");
+		modelAndView.setViewName("eventDetails");
 		modelAndView.addObject("contact", eventRepo.findById(eventId).get());
 
 		return modelAndView;
 	}
-	
 
+	/*
+	 * @GetMapping(value = "/plist") public ModelAndView plist() { List<Participant>
+	 * user = participantsRepo.findByUser(user); ModelAndView modelAndView = new
+	 * ModelAndView(); modelAndView.setViewName("plist");
+	 * 
+	 * return modelAndView; }
+	 */
+
+	@RequestMapping(value = "/takePart/{eventId}", method = RequestMethod.GET)
+	public String takePart(@PathVariable Long eventId) {
+		Event event = eventRepo.findById(eventId).get();
+		Login user = service.getLoggedInUser();
+
+		Participant p = new Participant();
+		p.setEvent(event);
+		p.setPayment(false);
+		p.setUser(user);
+		participantsRepo.save(p);
+		return "redirect:/event/services";
+
+	}
 }
