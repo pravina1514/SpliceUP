@@ -38,7 +38,7 @@ public class EventController {
 
 	@Autowired
 	ParticipantRepository participantsRepo;
-	
+
 	@Autowired
 	CommentRepository commentRepo;
 
@@ -93,6 +93,14 @@ public class EventController {
 
 	}
 
+	@RequestMapping(value = "/updateEvent", method = RequestMethod.POST)
+	public String createEvent(@ModelAttribute Event event) {
+		event.setEventHost(service.getLoggedInUser());
+		eventRepo.save(event);
+		return "redirect:/event/services";
+
+	}
+
 	@GetMapping(value = "/services")
 	public ModelAndView services() {
 
@@ -116,8 +124,8 @@ public class EventController {
 	public ModelAndView services(@PathVariable Long eventId) {
 		Event event = eventRepo.findById(eventId).get();
 		List<Participant> eventParti = participantsRepo.findByEvent(event);
-		List<Comment> eventComments=commentRepo.findByEvent(event);
-		
+		List<Comment> eventComments = commentRepo.findByEvent(event);
+
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("eventDetails");
 		modelAndView.addObject("contact", event);
