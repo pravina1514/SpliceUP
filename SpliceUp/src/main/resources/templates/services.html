@@ -4,6 +4,8 @@
 	layout:decorator="default">
 
 <body>
+
+
 	<div id="page" layout:fragment="content">
 		<div id="dynamicContent">
 
@@ -37,34 +39,30 @@
 											<div class="dropdown dropdown-lg">
 												<button type="button"
 													class="btn btn-default dropdown-toggle"
-													data-toggle="dropdown" aria-expanded="false">
-													<span class="caret"></span>
-												</button>
+													data-toggle="dropdown" aria-expanded="false"></button>
 												<div class="dropdown-menu dropdown-menu-right" role="menu">
 													<form class="form-horizontal" role="form">
 														<div class="form-group">
-															<label for="filter">Location : </label> <select
-																class="form-control search-box-style">
-																<option value="catalogue" selected>manjalpur</option>
-																<option value="modal">harinagar</option>
+															<label for="filter">City : </label> <select
+																id="cityDropdown" class="form-control search-box-style">
+																<option value="Test" selected>Test</option>
+																<option value="tt">tt</option>
 																<option value="price">alkapuri</option>
 																<option value="popular">fatehgunj</option>
 															</select>
 														</div>
 														<div class="form-group">
-															<label for="contain">Start Date : </label> <input
-																class="form-control search-box-style" type="date" />
-														</div>
-														<div class="form-group">
-															<label for="contain">Category:</label> <input
-																class="form-control search-box-style" type="text" />
+															<label for="contain">Location:</label> <input
+																id="locationField" class="form-control search-box-style"
+																type="text" />
 														</div>
 
 														<div class="form-group">
 
 															<br />
 
-															<button type="submit" class="btn btn-info btn-block">
+															<button type="button" onclick="filterEvents()"
+																class="btn btn-info btn-block">
 																Search :: <span class="glyphicon glyphicon-search"
 																	aria-hidden="true"></span>
 															</button>
@@ -72,9 +70,6 @@
 													</form>
 												</div>
 											</div>
-											<button type="button" class="btn btn-success ">
-												<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-											</button>
 										</div>
 									</div>
 								</div>
