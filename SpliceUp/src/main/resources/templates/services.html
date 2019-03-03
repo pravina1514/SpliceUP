@@ -26,22 +26,65 @@
 					<h2 class="tittle mb-xl-5 mb-4 text-center">
 						<span class="text-uppercase"></span> Upcoming Events
 					</h2>
-					<div>
-					<form >
-						
-				<select name="city">
-								<option>vadodara</option>
-								<option>ahmedabad</option>
-								<option>surat</option>
-				</select>
-								<input type="text" name="loc" value="location">
-				
-					
-				<input type="date">
-				<button  type="button" class="btn btn-secondary btn-search" >
-				SEARCH</button>
-				</form>
-			
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="input-group" id="boot-search-box">
+									<input type="text" class="form-control search-box-style"
+										placeholder="Filter your search:" />
+									<div class="input-group-btn">
+										<div class="btn-group" role="group">
+											<div class="dropdown dropdown-lg">
+												<button type="button"
+													class="btn btn-default dropdown-toggle"
+													data-toggle="dropdown" aria-expanded="false">
+													<span class="caret"></span>
+												</button>
+												<div class="dropdown-menu dropdown-menu-right" role="menu">
+													<form class="form-horizontal" role="form">
+														<div class="form-group">
+															<label for="filter">Location : </label> <select
+																class="form-control search-box-style">
+																<option value="catalogue" selected>manjalpur</option>
+																<option value="modal">harinagar</option>
+																<option value="price">alkapuri</option>
+																<option value="popular">fatehgunj</option>
+															</select>
+														</div>
+														<div class="form-group">
+															<label for="contain">Start Date : </label> <input
+																class="form-control search-box-style" type="date" />
+														</div>
+														<div class="form-group">
+															<label for="contain">Category:</label> <input
+																class="form-control search-box-style" type="text" />
+														</div>
+
+														<div class="form-group">
+
+															<br />
+
+															<button type="submit" class="btn btn-info btn-block">
+																Search :: <span class="glyphicon glyphicon-search"
+																	aria-hidden="true"></span>
+															</button>
+														</div>
+													</form>
+												</div>
+											</div>
+											<button type="button" class="btn btn-success ">
+												<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+						<script
+							src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
 					</div>
 
 					<div class="container">
@@ -78,7 +121,19 @@
 										th:href="@{'/event/takePart/'+${i.eid}}"
 										class="btn btn-primary">JOIN</a></span> <a
 										th:href="@{'/event/services/'+${i.eid}}"
-										class="btn btn-primary">VIEW</a>
+										class="btn btn-primary">VIEW</a> <span
+										th:if="${userName == i.eventHost.email}"> <a
+										th:href="@{'/event/edit/'+${i.eid}}" class="btn btn-primary">EDIT</a></span>
+
+									<span
+										th:if="${userName == i.eventHost.email && #lists.isEmpty(i.participants)}">
+										<a th:href="@{'/event/delete/'+${i.eid}}"
+										class="btn btn-primary">DELETE</a>
+									</span> <span
+										title="this event can not be deleted as it already is participants"
+										th:if="${userName == i.eventHost.email && not #lists.isEmpty(i.participants)}">
+										<button disabled="disabled" class="btn btn-primary">DELETE</button>
+									</span>
 							</div>
 						</div>
 					</div>

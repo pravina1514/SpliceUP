@@ -1,3 +1,4 @@
+
 package com.example.demo;
 
 import java.util.Date;
@@ -28,7 +29,7 @@ public class Event {
 	private Cities city;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "event")
-	private List<Faq> questions;
+	private List<Participant> participants;
 
 	private boolean payment;
 	private int capacity;
@@ -129,20 +130,20 @@ public class Event {
 		this.city = city;
 	}
 
-	public List<Faq> getQuestions() {
-		return questions;
-	}
-
-	public void setQuestions(List<Faq> questions) {
-		this.questions = questions;
-	}
-
 	public boolean isPaidEvent() {
 		return isPaidEvent;
 	}
 
 	public void setPaidEvent(boolean isPaidEvent) {
 		this.isPaidEvent = isPaidEvent;
+	}
+
+	public List<Participant> getParticipants() {
+		return participants;
+	}
+
+	public void setParticipants(List<Participant> participants) {
+		this.participants = participants;
 	}
 
 }

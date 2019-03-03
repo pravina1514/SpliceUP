@@ -10,6 +10,57 @@
 <meta charset="utf-8">
 <meta name="keywords"
 	content="Estate Register Form a Responsive Web Template, Bootstrap Web Templates, Flat Web Templates, Android Compatible Web Template, Smartphone Compatible Web Template, Free Webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design">
+<style>
+input[type="text"] {
+	font-size: 15px;
+	color: #fff;
+	font-weight: 500;
+	text-align: left;
+	text-transform: capitalize;
+	letter-spacing: 1px;
+	padding: 12px 10px 12px 10px;
+	width: 90%;
+	display: inline-block;
+	box-sizing: border-box;
+	border: none;
+	outline: none;
+	background: transparent;
+	font-family: 'Raleway', sans-serif;
+}
+
+input[type="email"] {
+	font-size: 15px;
+	color: #fff;
+	font-weight: 500;
+	text-align: left;
+	letter-spacing: 1px;
+	padding: 12px 10px 12px 10px;
+	width: 90%;
+	display: inline-block;
+	box-sizing: border-box;
+	border: none;
+	outline: none;
+	background: transparent;
+	font-family: 'Raleway', sans-serif;
+}
+
+input[type="Password"] {
+	font-size: 15px;
+	color: #fff;
+	font-weight: 500;
+	text-align: left;
+	text-transform: capitalize;
+	letter-spacing: 1px;
+	padding: 12px 10px 12px 10px;
+	width: 90%;
+	display: inline-block;
+	box-sizing: border-box;
+	border: none;
+	outline: none;
+	background: transparent;
+	font-family: 'Raleway', sans-serif;
+}
+</style>
 <script>
 	addEventListener("load", function() {
 		setTimeout(hideURLbar, 0);
@@ -62,7 +113,7 @@
 			<div class="agile_info">
 				<div class="w3l_form">
 					<div class="left_grid_info">
-						<img src="images/left.png" alt="" />
+						<img th:src="@{/images/left.png}" alt="" />
 					</div>
 				</div>
 				<div class="w3_info">
@@ -122,25 +173,24 @@
 		$(document).ready(function() {
 			$("#registration_form").validate({
 				rules : {
-					'userDetail.name' :
-						{
+					'userDetail.name' : {
 						required : true
 					//	minlength: jQuery.format("Enter at least (2) characters"),
-				      //  maxlength:jQuery.format("First name too long more than (80) characters"),
-				       // lettersonly:jQuery.format("letters only mate")
-						
-						},
+					//  maxlength:jQuery.format("First name too long more than (80) characters"),
+					// lettersonly:jQuery.format("letters only mate")
+
+					},
 					lastname : 'required',
 					"userDetail.mobile_no" : {
-						number: true,
+						number : true,
 						minlength : 10,
 						maxlength : 10,
-						required:true
+						required : true
 					},
-					password: {
-				            required: true,
-				            minlength: 5
-				        },
+					password : {
+						required : true,
+						minlength : 5
+					},
 					email : {
 						required : true,
 						email : true,//add an email rule that will ensure the value entered is valid email id.

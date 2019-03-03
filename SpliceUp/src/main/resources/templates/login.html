@@ -31,7 +31,57 @@
 	th:href="@{//fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900}"
 	rel="stylesheet">
 <!-- //google fonts -->
+<style>
+input[type="text"] {
+	font-size: 15px;
+	color: #fff;
+	font-weight: 500;
+	text-align: left;
+	text-transform: capitalize;
+	letter-spacing: 1px;
+	padding: 12px 10px 12px 10px;
+	width: 90%;
+	display: inline-block;
+	box-sizing: border-box;
+	border: none;
+	outline: none;
+	background: transparent;
+	font-family: 'Raleway', sans-serif;
+}
 
+input[type="email"] {
+	font-size: 15px;
+	color: #fff;
+	font-weight: 500;
+	text-align: left;
+	letter-spacing: 1px;
+	padding: 12px 10px 12px 10px;
+	width: 90%;
+	display: inline-block;
+	box-sizing: border-box;
+	border: none;
+	outline: none;
+	background: transparent;
+	font-family: 'Raleway', sans-serif;
+}
+
+input[type="Password"] {
+	font-size: 15px;
+	color: #fff;
+	font-weight: 500;
+	text-align: left;
+	text-transform: capitalize;
+	letter-spacing: 1px;
+	padding: 12px 10px 12px 10px;
+	width: 90%;
+	display: inline-block;
+	box-sizing: border-box;
+	border: none;
+	outline: none;
+	background: transparent;
+	font-family: 'Raleway', sans-serif;
+}
+</style>
 </head>
 <body>
 
@@ -51,18 +101,18 @@
 
 						<div class="input-group">
 							<div th:if="${inValidInfo} == 'true'">Invalid Credentials.</div>
-							<span><i class="fa fa-envelope" aria-hidden="true"></i>Email</span> <input
-								type="email" placeholder="Email" th:field="*{email}" 
+							<span><i class="fa fa-envelope" aria-hidden="true"></i>Email</span>
+							<input type="email" placeholder="Email" th:field="*{email}"
 								required="required">
 						</div>
 
 						<div class="input-group">
-							<span><i class="fa fa-lock" aria-hidden="true"></i>Password</span> <input
-								type="Password" name="password" th:field="*{password}"
+							<span><i class="fa fa-lock" aria-hidden="true"></i>Password</span>
+							<input type="Password" name="password" th:field="*{password}"
 								placeholder="Password" required="required">
 						</div>
 						<button class="btn btn-danger btn-block" type="submit">Login
-							</button>
+						</button>
 					</form>
 					<p class="account">
 						New user? Create Account <a href="/login/registration">Signup</a>

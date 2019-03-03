@@ -58,11 +58,29 @@ public class EventController {
 		return modelAndView;
 	}
 
+	@GetMapping(value = "/filter")
+	public ModelAndView filter() {
+
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("filter");
+
+		return modelAndView;
+	}
+
 	@GetMapping(value = "/about")
 	public ModelAndView about() {
 
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("about");
+
+		return modelAndView;
+	}
+
+	@GetMapping(value = "/chat1")
+	public ModelAndView chat() {
+
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("chat1");
 
 		return modelAndView;
 	}
@@ -94,10 +112,25 @@ public class EventController {
 	}
 
 	@RequestMapping(value = "/updateEvent", method = RequestMethod.POST)
-	public String createEvent(@ModelAttribute Event event) {
+	public String updateEvent(@ModelAttribute Event event) {
 		event.setEventHost(service.getLoggedInUser());
+
 		eventRepo.save(event);
+
 		return "redirect:/event/services";
+
+	}
+
+	@GetMapping(value = "/edit/{eventId}")
+	public ModelAndView edit(@PathVariable Long eventId) {
+		Event event = eventRepo.findById(eventId).get();
+
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("edit");
+		modelAndView.addObject("contact", event);
+		modelAndView.addObject("cities", cityRepo.findAll());
+
+		return modelAndView;
 
 	}
 
@@ -111,15 +144,6 @@ public class EventController {
 		return modelAndView;
 	}
 
-	@GetMapping(value = "/chat1")
-	public ModelAndView chat() {
-
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("chat1");
-
-		return modelAndView;
-	}
-
 	@GetMapping(value = "/services/{eventId}")
 	public ModelAndView services(@PathVariable Long eventId) {
 		Event event = eventRepo.findById(eventId).get();
@@ -128,6 +152,7 @@ public class EventController {
 
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("eventDetails");
+
 		modelAndView.addObject("contact", event);
 		modelAndView.addObject("entries", eventParti);
 		modelAndView.addObject("eventComments", eventComments);
@@ -160,6 +185,14 @@ public class EventController {
 
 	}
 
+	@RequestMapping(value = "/delete/{eventId}", method = RequestMethod.GET)
+	public String delete(@PathVariable Long eventId) {
+
+		eventRepo.deleteEventFromDB(eventId);
+
+		return "redirect:/event/services";
+	}
+
 	@RequestMapping(value = "/postComment", method = RequestMethod.POST)
 	public String createEvent(@ModelAttribute Comment comment) {
 		Event event = eventRepo.findById(comment.getEvent().getEid()).get();
@@ -170,4 +203,5 @@ public class EventController {
 		return "redirect:/event/services/" + event.getEid();
 
 	}
+
 }
