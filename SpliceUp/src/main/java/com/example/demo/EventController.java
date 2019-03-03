@@ -3,12 +3,14 @@ package com.example.demo;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -135,11 +137,29 @@ public class EventController {
 	}
 
 	@GetMapping(value = "/services")
-	public ModelAndView services() {
+	public ModelAndView services(@RequestParam(value = "cityName", required = false) String cityName,
+			@RequestParam(value = "location", required = false) String location) {
 
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("services");
-		modelAndView.addObject("contact", eventRepo.findAll());
+		List<Event> eventList = eventRepo.findAll();
+		List<Event> filteredList = new ArrayList<>();
+		if (!StringUtils.isEmpty(cityName) || !StringUtils.isEmpty(location)) {
+			for (Event event : eventList) {
+				if (!StringUtils.isEmpty(cityName) && event.getCity().getName().equalsIgnoreCase(cityName)) {
+					filteredList.add(event);
+				} else if (!StringUtils.isEmpty(location) && event.getLocation().contains(location)) {
+					filteredList.add(event);
+
+				}
+
+			}
+			modelAndView.addObject("contact", filteredList);
+
+		} else {
+			modelAndView.addObject("contact", eventList);
+
+		}
 
 		return modelAndView;
 	}

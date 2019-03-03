@@ -12,24 +12,70 @@
 
 <link th:href="@{/css/style1.css}" type="text/css" rel="stylesheet"
 	media="all">
-	
-	<link th:href="@{/css/style.css}" type="text/css" rel="stylesheet"
+
+<link th:href="@{/css/style.css}" type="text/css" rel="stylesheet"
 	media="all">
 <link th:href="@{/css/menufullpage.css}" rel="stylesheet">
 <!-- font-awesome icons -->
 <link th:href="@{/css/fontawesome-all.min.css}" rel="stylesheet">
 <!-- //Custom Theme files -->
 <!-- online-fonts -->
-<link href="//fonts.googleapis.com/css?family=IBM+Plex+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i"
+<link
+	href="//fonts.googleapis.com/css?family=IBM+Plex+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i"
 	rel="stylesheet">
 
 <link th:href="@{/css/index.css}" rel="stylesheet">
 
 <link th:href="@{/css/scrollbar.min.css}" rel="stylesheet">
 
-	<link th:href="@{/css/chat1.css}" rel="stylesheet">
-		<link th:href="@{/css/filter.css}" rel="stylesheet">
-		
-	
+<link th:href="@{/css/chat1.css}" rel="stylesheet">
+<link th:href="@{/css/filter.css}" rel="stylesheet">
+<style>
+body {
+	padding-top: 50px;
+}
+
+.dropdown.dropdown-lg .dropdown-menu {
+	margin-top: -1px;
+	padding: 4px 15px;
+}
+
+.btn-group .btn {
+	border-radius: 0;
+	margin-left: -1px;
+}
+
+.form-horizontal .form-group {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.search-box-style {
+	padding: 9px;
+	border: solid 1px #408080;
+	outline: 0;
+	background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF),
+		color-stop(4%, #A4FFA4), to(#FFFFFF));
+	background: -moz-linear-gradient(top, #FFFFFF, #A4FFA4 1px, #FFFFFF 25px);
+	box-shadow: rgba(0, 64, 64, 0.3) 0px 0px 8px;
+	-moz-box-shadow: rgba(0, 64, 64, 0.3) 0px 0px 8px;
+	-webkit-box-shadow: rgba(0, 64, 64, 0.3) 0px 0px 8px;;
+}
+
+@media screen and (min-width: 768px) {
+	#boot-search-box {
+		width: 500px;
+		margin: 0 auto;
+	}
+	.dropdown.dropdown-lg {
+		position: static !important;
+	}
+	.dropdown.dropdown-lg .dropdown-menu {
+		min-width: 500px;
+	}
+}
+</style>
+
+
 
 </head>

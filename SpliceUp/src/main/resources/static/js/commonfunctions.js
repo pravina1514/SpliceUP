@@ -13,3 +13,8 @@ $(document).ready(function() {
 		}
 	});
 });
+
+function filterEvents() {
+	window.location = "/event/services?cityName=" + $("#cityDropdown").val()
+			+ "&location=" + $("#locationField").val();
+}
