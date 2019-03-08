@@ -64,9 +64,8 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
   text-align: left;
-  background-color: #fff;
+ 
 }
 
 [tabindex="-1"]:focus {
@@ -161,7 +160,7 @@ sup {
 }
 
 a {
-  color: #007bff;
+ 
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
@@ -480,6 +479,7 @@ mark,
 .img-fluid {
   max-width: 100%;
   height: auto;
+  border-radius:100%;
 }
 
 .img-thumbnail {
@@ -588,7 +588,7 @@ pre code {
 .container-fluid {
   width: 100%;
   padding-right: 15px;
-  padding-left: 15px;
+  
   margin-right: auto;
   margin-left: auto;
 }
@@ -1961,7 +1961,7 @@ pre code {
   font-size: 1rem;
   line-height: 1.5;
   color: #495057;
-  background-color: #fff;
+  background-color: #80b7b2;
   background-clip: padding-box;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
@@ -3946,7 +3946,7 @@ tbody.collapse.show {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 0.5rem 1rem;
+ 
 }
 
 .navbar > .container,
@@ -7683,10 +7683,6 @@ button.bg-dark:focus {
   padding-right: 3rem !important;
 }
 
-.pb-5,
-.py-5 {
-  padding-bottom: 3rem !important;
-}
 
 .pl-5,
 .px-5 {
@@ -8680,18 +8676,13 @@ button.bg-dark:focus {
   .p-xl-5 {
     padding: 3rem !important;
   }
-  .pt-xl-5,
-  .py-xl-5 {
-    padding-top: 3rem !important;
-  }
+  
+  
   .pr-xl-5,
   .px-xl-5 {
     padding-right: 3rem !important;
   }
-  .pb-xl-5,
-  .py-xl-5 {
-    padding-bottom: 3rem !important;
-  }
+  
   .pl-xl-5,
   .px-xl-5 {
     padding-left: 3rem !important;

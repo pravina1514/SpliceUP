@@ -55,7 +55,7 @@ public class EventController {
 	public ModelAndView home() {
 
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("index");
+		modelAndView.setViewName("home");
 
 		return modelAndView;
 	}
@@ -88,10 +88,10 @@ public class EventController {
 	}
 
 	@GetMapping(value = "/createEvent")
-	public ModelAndView contact() {
+	public ModelAndView createEvent() {
 
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("contact");
+		modelAndView.setViewName("createEvent");
 		modelAndView.addObject("cities", cityRepo.findAll());
 
 		return modelAndView;
@@ -136,12 +136,22 @@ public class EventController {
 
 	}
 
+	@RequestMapping(value = "/delete/{eventId}", method = RequestMethod.GET)
+	public String delete(@PathVariable Long eventId) {
+
+		eventRepo.deleteEventFromDB(eventId);
+
+		return "redirect:/event/services";
+	}
+
 	@GetMapping(value = "/services")
 	public ModelAndView services(@RequestParam(value = "cityName", required = false) String cityName,
 			@RequestParam(value = "location", required = false) String location) {
 
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("services");
+		modelAndView.addObject("cities", cityRepo.findAll());
+
 		List<Event> eventList = eventRepo.findAll();
 		List<Event> filteredList = new ArrayList<>();
 		if (!StringUtils.isEmpty(cityName) || !StringUtils.isEmpty(location)) {
@@ -205,13 +215,13 @@ public class EventController {
 
 	}
 
-	@RequestMapping(value = "/delete/{eventId}", method = RequestMethod.GET)
-	public String delete(@PathVariable Long eventId) {
-
-		eventRepo.deleteEventFromDB(eventId);
-
-		return "redirect:/event/services";
-	}
+	/*
+	 * @RequestMapping(value = "/delete/{commentId}", method = RequestMethod.GET)
+	 * public String deleteComment(@PathVariable Long commentId) {
+	 * 
+	 * commentRepo.deleteCommentFromDB(commentId); return
+	 * "redirect:/event/services"; }
+	 */
 
 	@RequestMapping(value = "/postComment", method = RequestMethod.POST)
 	public String createEvent(@ModelAttribute Comment comment) {

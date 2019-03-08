@@ -1,7 +1,4 @@
 
-body {
-    padding-top: 50px;
-}
 .dropdown.dropdown-lg .dropdown-menu {
     margin-top: -1px;
     padding: 4px 15px;
@@ -29,14 +26,14 @@ body {
     }  
 @media screen and (min-width: 768px) {
     #boot-search-box {
-        width: 500px;
+        width: 300px;
         margin: 0 auto;
     }
     .dropdown.dropdown-lg {
         position: static !important;
     }
     .dropdown.dropdown-lg .dropdown-menu {
-        min-width: 500px;
+        min-width: 300px;
     }
 }
    

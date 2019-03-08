@@ -3,20 +3,12 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="default">
 
-<body>
+<body bgcolor="#59253A">
 
 
 	<div id="page" layout:fragment="content">
 		<div id="dynamicContent">
 
-
-			<div class="main position-relative">
-				<!-- logo -->
-				<h1 class="logo_wthree"></h1>
-
-				<section class="inner-banner-agile"></section>
-
-			</div>
 			<!-- banner -->
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="/event/home">Home</a></li>
@@ -26,12 +18,12 @@
 			<section class="wthree-row w3-about  py-5">
 				<div class="container py-md-4 mt-md-3">
 					<h2 class="tittle mb-xl-5 mb-4 text-center">
-						<span class="text-uppercase"></span> Upcoming Events
+						<span class="exp"></span> EXPLORE  EVENTS
 					</h2>
 					<div class="container">
 						<div class="row">
-							<div class="col-md-12">
-								<div class="input-group" id="boot-search-box">
+							<div class="col-md-6">
+								  <div class="input-group" id="boot-search-box">
 									<input type="text" class="form-control search-box-style"
 										placeholder="Filter your search:" />
 									<div class="input-group-btn">
@@ -45,10 +37,8 @@
 														<div class="form-group">
 															<label for="filter">City : </label> <select
 																id="cityDropdown" class="form-control search-box-style">
-																<option value="Test" selected>Test</option>
-																<option value="tt">tt</option>
-																<option value="price">alkapuri</option>
-																<option value="popular">fatehgunj</option>
+																<option th:each="i : ${cities}" th:value="${i.cid}"
+													             th:text="${i.name}"></option>
 															</select>
 														</div>
 														<div class="form-group">
@@ -75,12 +65,14 @@
 								</div>
 							</div>
 						</div>
+						
 
 						<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 						<script
 							src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 					</div>
+				
 
 					<div class="container">
 						<div class="row pt-5" th:each="i : ${contact}">
@@ -94,29 +86,34 @@
 									</h5>
 
 									<br>
-									<td>Hosted By: <span
+									<td class="hb">Hosted By: <span
 										th:text="${i.eventHost.userDetail.name}"></span></td> <br>
+									<tr><br>
+										<td class="hb">Starting Date: <br><span class="dateFieldCpm d-none" th:text="${i.s_date}"></span></td><br>
+									</tr><br>
+			
 									<tr>
-										<td>Starting Date: <span th:text="${i.s_date}"></span></td>
-									</tr>
-									<br> <br>
+										<td class="hb">Ending Date: <br><span class="dateFieldCpm d-none" th:text="${i.e_date}"></span></td><br>
+									</tr><br>
+								
 									<tr>
-										<td>Ending Date: <span th:text="${i.e_date}"></span></td>
-									</tr>
-									<br> <br>
-									<tr>
-										<p class="card-text mb-3">
+										<p class="hb">
 											<i class="fas fa-map-marker pr-2"></i> <span
 												th:text="${i.city.name}"></span>
 										</p>
 									</tr>
+									<br>
 
 
 									<span th:if="${userName!= i.eventHost.email}"> <a
 										th:href="@{'/event/takePart/'+${i.eid}}"
-										class="btn btn-primary">JOIN</a></span> <a
+										class="btn btn-primary">JOIN</a></span> 
+										
+										<a
 										th:href="@{'/event/services/'+${i.eid}}"
-										class="btn btn-primary">VIEW</a> <span
+										class="btn btn-primary">VIEW</a> 
+										
+										<span
 										th:if="${userName == i.eventHost.email}"> <a
 										th:href="@{'/event/edit/'+${i.eid}}" class="btn btn-primary">EDIT</a></span>
 

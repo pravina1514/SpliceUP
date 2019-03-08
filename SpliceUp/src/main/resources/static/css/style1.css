@@ -6,7 +6,7 @@
 body {
 	margin: 0;
 	font-family: 'IBM Plex Sans', sans-serif;
-	background: #fff;
+	
 }
 
 body a, .slider-info a {
@@ -160,11 +160,7 @@ ul.list-inline.bnr_list_w3 li a, a.btn-slide {
 	border: 1px solid transparent;
 }
 
-section.inner-banner-agile {
-	background: url(../images/bg1.jpg) no-repeat center;
-	background-size: cover;
-	min-height: 300px;
-}
+
 /* banner text effect */
 .banner_text_wthree h3 {
 	position: relative;
@@ -260,7 +256,7 @@ keyframes loading { 0% {
 h2.tittle, h3.tittle {
 	font-size: 40px;
 	font-weight: 600;
-	letter-spacing: 1px;
+	letter-spacing: 5px;
 }
 
 h2.tittle span, h3.tittle span {
@@ -970,7 +966,7 @@ p.card-text {
 	padding: 15px 15px;
 	font-size: 14px;
 	color: #777;
-	background: #fff;
+	background: #80b7b2;
 	width: 100%;
 	letter-spacing: 1px;
 	border: 1px solid #ebeeef;
@@ -1398,7 +1394,7 @@ p.card-text {
 
 .eventdetail .eventdetail-data .event-data p {
 	font-size: 24px;
-	color: #000;
+	color: #fff;
 	font-weight: bold;
 	margin-bottom: 5px;
 	margin-top: 5px;
@@ -1407,7 +1403,9 @@ p.card-text {
 
 .eventdetail .eventdetail-data .event-data p span {
 	font-weight: 200;
-	color: #f00;
+	color: #80b7b2;
+		font-weight: bold;
+	
 }
 
 .eventdetail .eventdetail-data .event-data td {
