@@ -949,12 +949,12 @@ p.card-text {
 /* //services*/
 /*--/contact--*/
 .main_grid_contact {
-	background: #f7f7f7;
+	background: #80b7b2;
 	padding: 9em 5em;
 }
 
 .main_grid_contact label {
-	color: #80b7b2;
+	color: #fff;
 	letter-spacing: 1px;
 	font-size: 1em;
 	font-weight: 600;
@@ -966,7 +966,7 @@ p.card-text {
 	padding: 15px 15px;
 	font-size: 14px;
 	color: #777;
-	background: #80b7b2;
+	background: #fff;
 	width: 100%;
 	letter-spacing: 1px;
 	border: 1px solid #ebeeef;
@@ -983,8 +983,8 @@ p.card-text {
 	outline: none;
 	padding: 20px 0;
 	font-size: 14px;
-	color: #fff;
-	background: #1b1e21;
+	color: #000;
+	background: #fff;
 	border: none;
 	letter-spacing: 2px;
 	text-transform: uppercase;
@@ -999,7 +999,7 @@ p.card-text {
 }
 
 .main_grid_contact .input-group1 input[type="submit"]:hover {
-	background: #80b7b2;
+	background: #fff;
 }
 
 .map {
@@ -1014,7 +1014,7 @@ p.card-text {
 
 .address-grid-w3l i {
 	font-size: 1.5em;
-	color: #80b7b2;
+	color: #fff;
 }
 
 .address-right h6 {

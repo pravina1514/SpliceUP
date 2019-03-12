@@ -234,4 +234,14 @@ public class EventController {
 
 	}
 
+	@GetMapping(value = "/contact")
+	public ModelAndView cont() {
+
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("contact");
+		// modelAndView.addObject("eve", user);
+
+		return modelAndView;
+	}
+
 }
