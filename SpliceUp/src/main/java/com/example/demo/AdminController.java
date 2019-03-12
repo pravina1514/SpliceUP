@@ -25,23 +25,5 @@ public class AdminController {
 		return modelAndView;
 	}
 
-	@GetMapping(value = "/viewDelete/{recordId}")
-	public ModelAndView viewdelete(@PathVariable Long recordId) {
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("adminrecord", userRepo.findById(recordId).get());
-
-		modelAndView.setViewName("ar_viewdelete");
-
-		return modelAndView;
-
-	}
-
-	@RequestMapping(value = "/delete/{recordId}", method = RequestMethod.GET)
-	public String delete(@PathVariable Long recordId) {
-
-		userRepo.deleteById(recordId);
-
-		return "redirect:/admin/ar";
-	}
-
+	
 }

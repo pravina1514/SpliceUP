@@ -18,20 +18,36 @@
       <th class="th-sm">EMAIL
       </th>
       
-      
-      
+      <th class="th-sm">CONTACT NO</th>
+		
+		<th class="th-sm">GENDER</th>
+		
+		<th class="th-sm">ROLE</th>
+		
+		
+    
     </tr>
   </thead>
+  
   <tbody >
+  
        <tr th:if="${List_Of_Users.empty}">
             <td colspan="2"> No Users Available </td>
         </tr>
+        
         <tr th:each="adminrecord : ${List_Of_Users}">
-        
-        <td><a th:href="@{'/admin/viewDelete/'+${adminrecord.uid}}"><span style="color:#80b7b2; text-transform:uppercase;" th:text="${adminrecord.userDetail.name}"></span></a></td>
-        
+               
+         <td><span th:text="${adminrecord.userDetail.name}"></span></td>
             
         <td><span th:text="${adminrecord.email}"></span></a></td>
+        
+        <td><span th:text="${adminrecord.userDetail.mobile_no}"></span></td>
+						<td><span th:text="${adminrecord.userDetail.gender}"></span></td>
+						<td><span th:text="${adminrecord.userDetail.role}"></span></td>
+						<span th:if="${userName!=adminrecord.email}">
+
+						
+	</span>
                         
         </tr>
     
