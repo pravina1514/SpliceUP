@@ -10,6 +10,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -117,7 +118,13 @@ public class EventController {
 	public String updateEvent(@ModelAttribute Event event) {
 		event.setEventHost(service.getLoggedInUser());
 
-		eventRepo.save(event);
+		Event dbEvent = eventRepo.save(event);
+
+		if (!CollectionUtils.isEmpty(dbEvent.getParticipants())) {
+			for (Participant p : dbEvent.getParticipants()) {
+				p.getUser().getEmail();
+			}
+		}
 
 		return "redirect:/event/services";
 
@@ -153,6 +160,13 @@ public class EventController {
 		modelAndView.addObject("cities", cityRepo.findAll());
 
 		List<Event> eventList = eventRepo.findAll();
+		List<Event> nonExpiredEvents = new ArrayList<>();
+		for (Event event : eventList) {
+			if (event.getE_date() != null && event.getS_date() != null && event.getE_date().after(new Date())) {
+				nonExpiredEvents.add(event);
+			}
+		}
+		eventList = nonExpiredEvents;
 		List<Event> filteredList = new ArrayList<>();
 		if (!StringUtils.isEmpty(cityName) || !StringUtils.isEmpty(location)) {
 			for (Event event : eventList) {
