@@ -3,13 +3,10 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-<title>Estate Register Form Responsive Widget Template ::
-	w3layouts</title>
+
 <!-- Meta-Tags -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
-<meta name="keywords"
-	content="Estate Register Form a Responsive Web Template, Bootstrap Web Templates, Flat Web Templates, Android Compatible Web Template, Smartphone Compatible Web Template, Free Webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design">
 <style>
 input[type="text"] {
 	font-size: 15px;
@@ -107,21 +104,20 @@ input[type="Password"] {
 <body>
 
 	<div class="signupform">
-		<h1>Estate Register Form</h1>
+		<h1>
+</h1>
 		<div class="container">
 			<!-- main content -->
 			<div class="agile_info">
 				<div class="w3l_form">
-					<div class="left_grid_info">
-						<img th:src="@{/images/left.png}" alt="" />
+					<div class="left_grid_info" style="padding:0;margin:0;">
+						<img th:src="@{/images/smile.jpg}" alt="" style="height:500px; width:385px" />
 					</div>
 				</div>
-				<div class="w3_info">
+				<div class="w3_info" >
 					<input type="hidden" th:value="${userexists}" id="userexists">
 
 					<h2>Sign up for an Account</h2>
-					<p>Vestibulum est nulla, fermentum eget ipsum euismod et,
-						tincidunt at dui dolor sit.</p>
 					<form th:action="@{/login/registration}" th:object="${user}"
 						method="post" id="registration_form">
 						<div class="input-group">

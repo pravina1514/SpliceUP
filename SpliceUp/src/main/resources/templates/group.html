@@ -5,56 +5,40 @@
 <body>
 	<div id="page" layout:fragment="content">
 		<div id="dynamicContent">
-		
-		<form id="searchform" method="get" action="">
-        <div align="center"  >
-            <div class="input-group">
-                <div class="input-group-btn">
-                    <button tabindex="-1" class="btn btn-default" type="button">Select:</button>
-                       
-                    <button tabindex="-1" data-toggle="dropdown"
-                        class="btn btn-default dropdown-toggle" type="button">
-                        <span class="caret"></span>
-                    </button>
-                    <ul role="menu" class="dropdown-menu" style="vertical-align: top;">
-                        
-                        <li class="divider"></li>
-                        
-        <tr th:each="i : ${entries}">
-                        <li style="vertical-align: top;"> 
-                        <input id="all" name="all" type="checkbox" style="width:30px;height:auto;cursor: pointer;">
-                        <span th:text="${i.user.userDetail.name}"></span>
-                        </li>    
-        
-        </tr>
-                    </ul>
-       </div>
+			<form th:action="@{/event/manageGroup}" th:object="${partGroup}"
+				method="post">
 
-        </div>
-    </form>
- 
-    <div class="form-group">
-			<label for="contain">Group Name:</label> <input
-				id="locationField" class="form-control search-box-style"
-				type="text" />
-	</div>
-    
-    
-  
-    
-     <div class="form-group">
-				<label for="contain">Group Discription:</label> <input
-					id="locationField" class="form-control search-box-style"
-					type="text" />
-	</div>
-						
-	<div class="input-group1 main-event-button">
-		<button class="btn btn-danger btn-block event-button" type="submit">Create Group</button>
-	</div>					
-			
-    
-    </div>
-		
+				<div class="form-group">
+					<label for="contain">Participants</label> <select required="required"
+						class="form-control" name="partiCipantList" multiple>
+						<option th:each="i : ${entries}" th:value="${i.id}"
+							th:text="${i.user.userDetail.name}">    </option>
+					</select>
+				</div>
+
+
+				<div class="form-group">
+					<label for="contain">Group Name:</label> <input name="groupName" required="required"
+						id="locationField" class="form-control search-box-style"
+						type="text" />
+				</div>
+
+
+
+
+				<div class="form-group">
+					<label for="contain">Group Discription:</label> <input required="required"
+						id="locationField" name="groupDescirption"
+						class="form-control search-box-style" type="text" />
+				</div>
+				<input type="hidden" th:field="*{event.eid}">
+				<div class="input-group1 main-event-button">
+					<button class="btn btn-danger btn-block event-button" type="submit">Create
+						Group</button>
+				</div>
+			</form>
+		</div>
+
 	</div>
 </body>
 </html>

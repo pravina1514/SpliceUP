@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -21,6 +22,10 @@ public class Participant {
 	@OneToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "eid", nullable = false)
 	private Event event;
+
+	@ManyToOne(fetch = FetchType.LAZY, optional = true)
+	@JoinColumn(name = "group_id", nullable = true)
+	private ParticipantsGroup partiCipantGroup;
 
 	public boolean isPayment() {
 		return payment;
@@ -52,5 +57,13 @@ public class Participant {
 
 	public void setEvent(Event event) {
 		this.event = event;
+	}
+
+	public ParticipantsGroup getPartiCipantGroup() {
+		return partiCipantGroup;
+	}
+
+	public void setPartiCipantGroup(ParticipantsGroup partiCipantGroup) {
+		this.partiCipantGroup = partiCipantGroup;
 	}
 }

@@ -280,9 +280,7 @@ h1 {
 	background: #0099cc;
 }
 
-.left_grid_info {
-	padding: 6em 4em;
-}
+
 
 .agile_info {
 	display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
@@ -320,6 +318,12 @@ ul.social_section_1info a:hover {
 .w3_info p {
 	padding-bottom: 30px;
 	text-align: center;
+}
+
+.left_grid_info{
+
+
+	
 }
 
 p.account, p.account a {
@@ -399,9 +403,8 @@ h5 {
 	.container {
 		width: 80%;
 	}
-	.left_grid_info {
-		padding: 7em 3em;
-	}
+	
+	
 	.w3_info {
 		padding: 3em 3em;
 	}
@@ -460,9 +463,7 @@ h5 {
 	.container {
 		width: 95%;
 	}
-	.left_grid_info {
-		padding: 9em 3em;
-	}
+
 	.w3_info h2 {
 		letter-spacing: 1px;
 	}
@@ -497,9 +498,7 @@ h5 {
 	.container {
 		width: 80%;
 	}
-	.left_grid_info {
-		padding: 3em 3em;
-	}
+	
 	.w3_info {
 		padding: 3em 4em;
 		margin: 0 auto;

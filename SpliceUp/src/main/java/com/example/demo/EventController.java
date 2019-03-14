@@ -8,10 +8,12 @@ import java.util.Date;
 import java.util.List;
 
 import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.WebDataBinder;
@@ -28,10 +30,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping(value = "/event")
 public class EventController {
-	
+
 	@Autowired
 	private SmtpMailSender smtpMailSender;
-
 
 	@Autowired
 	EventRepository eventRepo;
@@ -50,6 +51,9 @@ public class EventController {
 
 	@Autowired
 	CommentRepository commentRepo;
+
+	@Autowired
+	ParticipantsGroupRepository groupRepo;
 
 	public static String uploadDir = "E:\\sts\\Workspace\\maven.1535549954053\\SpliceUp\\src\\main\\resources\\static\\images\\upload";
 
@@ -121,29 +125,33 @@ public class EventController {
 	}
 
 	@RequestMapping(value = "/updateEvent", method = RequestMethod.POST)
-	public ModelAndView updateEvent(@ModelAttribute Event event) {
-		ModelAndView modelAndView = new ModelAndView();
-
+	public String updateEvent(@ModelAttribute Event event, Model model) {
 		event.setEventHost(service.getLoggedInUser());
 
 		Event dbEvent = eventRepo.save(event);
-		//modelAndView.addObject("eName", eventRepo);
-
+		model.addAttribute("emailSent", "false");
 
 		if (!CollectionUtils.isEmpty(dbEvent.getParticipants())) {
 			for (Participant p : dbEvent.getParticipants()) {
-				
+
 				try {
-					smtpMailSender.send(p.getUser().getEmail(), event.getName() + ":UPDATED", "Event details are updated! Visit website to check new details");
-				} catch (MessagingException e) {
+					smtpMailSender.send(p.getUser().getEmail(), event.getName(),
+							"changes in event you have participated, please visit website for details");
+					model.addAttribute("emailSent", "true");
+
+				}
+
+				catch (MessagingException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+					model.addAttribute("emailSent", "false");
+
 				}
 
 			}
 		}
 
-		return modelAndView;
+		return "redirect:/event/services";
 
 	}
 
@@ -173,7 +181,7 @@ public class EventController {
 			@RequestParam(value = "location", required = false) String location) {
 
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("services");
+		modelAndView.setViewName("events");
 		modelAndView.addObject("cities", cityRepo.findAll());
 
 		List<Event> eventList = eventRepo.findAll();
@@ -274,23 +282,40 @@ public class EventController {
 
 		return modelAndView;
 	}
-	
+
 	@GetMapping(value = "/group/{eventId}")
 	public ModelAndView group(@PathVariable Long eventId) {
 		Event event = eventRepo.findById(eventId).get();
 		List<Participant> eventParti = participantsRepo.findByEvent(event);
 
-	ModelAndView modelAndView = new ModelAndView();
+		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("group");
 		modelAndView.addObject("contact", event);
-		modelAndView.addObject("entries", eventParti);
-	//	modelAndView.addObject("user", userRepo.findAll());
+		modelAndView.addObject("eventId", eventParti);
+		// modelAndView.addObject("user", userRepo.findAll());
 		modelAndView.addObject("contact", event);
-	
+		ParticipantsGroup p = new ParticipantsGroup();
+		p.setEvent(event);
+		modelAndView.addObject("entries", eventParti);
+
+		modelAndView.addObject("partGroup", p);
 
 		return modelAndView;
 
 	}
-	
+
+	@RequestMapping(value = "/manageGroup", method = RequestMethod.POST)
+	public String manageGroup(@ModelAttribute ParticipantsGroup group, HttpServletRequest request) {
+		Event event = eventRepo.findById(group.getEvent().getEid()).get();
+		String[] partId = request.getParameterMap().get("partiCipantList");
+		ParticipantsGroup dbGroup = groupRepo.save(group);
+		for (String id : partId) {
+			Participant p = participantsRepo.findById(Long.parseLong(id)).get();
+			p.setPartiCipantGroup(dbGroup);
+			participantsRepo.save(p);
+		}
+		return "redirect:/event/group/" + event.getEid();
+
+	}
 
 }
