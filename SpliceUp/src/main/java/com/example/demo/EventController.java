@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.mail.MessagingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -26,6 +28,10 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping(value = "/event")
 public class EventController {
+	
+	@Autowired
+	private SmtpMailSender smtpMailSender;
+
 
 	@Autowired
 	EventRepository eventRepo;
@@ -115,18 +121,29 @@ public class EventController {
 	}
 
 	@RequestMapping(value = "/updateEvent", method = RequestMethod.POST)
-	public String updateEvent(@ModelAttribute Event event) {
+	public ModelAndView updateEvent(@ModelAttribute Event event) {
+		ModelAndView modelAndView = new ModelAndView();
+
 		event.setEventHost(service.getLoggedInUser());
 
 		Event dbEvent = eventRepo.save(event);
+		//modelAndView.addObject("eName", eventRepo);
+
 
 		if (!CollectionUtils.isEmpty(dbEvent.getParticipants())) {
 			for (Participant p : dbEvent.getParticipants()) {
-				p.getUser().getEmail();
+				
+				try {
+					smtpMailSender.send(p.getUser().getEmail(), event.getName() + ":UPDATED", "Event details are updated! Visit website to check new details");
+				} catch (MessagingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
 			}
 		}
 
-		return "redirect:/event/services";
+		return modelAndView;
 
 	}
 
@@ -257,5 +274,23 @@ public class EventController {
 
 		return modelAndView;
 	}
+	
+	@GetMapping(value = "/group/{eventId}")
+	public ModelAndView group(@PathVariable Long eventId) {
+		Event event = eventRepo.findById(eventId).get();
+		List<Participant> eventParti = participantsRepo.findByEvent(event);
+
+	ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("group");
+		modelAndView.addObject("contact", event);
+		modelAndView.addObject("entries", eventParti);
+	//	modelAndView.addObject("user", userRepo.findAll());
+		modelAndView.addObject("contact", event);
+	
+
+		return modelAndView;
+
+	}
+	
 
 }
