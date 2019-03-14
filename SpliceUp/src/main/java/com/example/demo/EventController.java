@@ -292,7 +292,6 @@ public class EventController {
 		modelAndView.setViewName("group");
 		modelAndView.addObject("contact", event);
 		modelAndView.addObject("eventId", eventParti);
-		// modelAndView.addObject("user", userRepo.findAll());
 		modelAndView.addObject("contact", event);
 		ParticipantsGroup p = new ParticipantsGroup();
 		p.setEvent(event);
@@ -315,6 +314,20 @@ public class EventController {
 			participantsRepo.save(p);
 		}
 		return "redirect:/event/group/" + event.getEid();
+
+	}
+
+	@GetMapping(value = "/viewGroups/{eventId}")
+	public ModelAndView viewGroups(@PathVariable Long eventId) {
+		Event event = eventRepo.findById(eventId).get();
+		List<ParticipantsGroup> partGroup = groupRepo.findByEvent(event);
+
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("groupList");
+		modelAndView.addObject("partGroup", partGroup);
+		modelAndView.addObject("eventId", eventId);
+
+		return modelAndView;
 
 	}
 
