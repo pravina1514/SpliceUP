@@ -15,9 +15,9 @@
 
 <div class="box">
 <h2>Get In Touch</h2>
-	<form>
-		<input type="text" name="name" class="form-control" placeholder="Pravina Prajapti" required><br>
-		<input type="email" name="email" class="form-control" placeholder="spliceupwebapp@gmail.com" required><br>
+	<form th:action="@{/event/contact}" th:object="${user}" method="post" id="contact_form">
+		<input type="text" name="name" class="form-control" placeholder="name" required><br>
+		<input type="email" name="email" class="form-control" placeholder="email" required><br>
 		<textarea rows="4" cols="" name="message" class="form-control" placeholder="contact us if any query.." required></textarea><br>
 		<input type="submit" name="" value="SEND MESSAGE" class="form-control submit">
 	</form>
