@@ -19,20 +19,16 @@
       </th>
       
       <th class="th-sm">CONTACT NO</th>
-		
-		
-		
+	
 		<th class="th-sm">ROLE</th>
-		
-		
-    
+	
     </tr>
   </thead>
   
   <tbody >
   
        <tr th:if="${List_Of_Users.empty}">
-            <td colspan="2"> No Users Available </td>
+            <td colspan="2"> No User Available </td>
         </tr>
         
         <tr th:each="adminrecord : ${List_Of_Users}">
