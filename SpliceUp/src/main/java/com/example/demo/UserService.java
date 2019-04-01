@@ -20,6 +20,8 @@ public interface UserService {
 
 	public Login saveUser(Login user);
 
+	public Contact saveUser(Contact user);
+
 	public Login findUserByEmail(String email);
 
 	User loadUserByUsername(String username) throws UsernameNotFoundException;
@@ -27,4 +29,5 @@ public interface UserService {
 	Login getLoggedInUser();
 
 	String getLoggedInUserRole();
+
 }

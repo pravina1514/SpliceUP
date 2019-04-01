@@ -28,9 +28,6 @@ public class UserDetail {
 	@Column(name = "name")
 	private String name;
 
-	@Column(name = "gender")
-	private String gender;
-
 	@Column(name = "role")
 	private String role;
 
@@ -40,14 +37,6 @@ public class UserDetail {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
 	}
 
 	public Long getMobile_no() {

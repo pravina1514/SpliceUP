@@ -5,7 +5,7 @@
 	layout:decorator="default">
 	<head><link rel="stylesheet" type="text/css" href="../css/eventDetail.css"></head>
 
-<body bgcolor="#59253A">
+<body bgcolor="#1b3256">
 	<div id="page" layout:fragment="content" class=" eventdetail">
 		<div id="dynamicContent">
 		<!-- banner -->
@@ -33,13 +33,20 @@
 				</div>
 
 				<div class="col-6 event-data">
-				<p>Description:<br><span th:text="${contact.description}"></span></p>
+				<p>Description:<br><span th:text="${contact.description}"></span></p><br>
 				<p>Starting Date:<br><span class="dateFieldCpm d-none" th:text="${contact.s_date}"></span>
-				</p>
+				</p><br>
 							<p>
 								Ending Date:<br><span class="dateFieldCpm d-none"
 									th:text="${contact.e_date}"></span>
 							</p>
+							<br>
+							
+							<p>
+								Location:<br><span 
+									th:text="${contact.location}"></span>
+							</p>
+							<br>
 						</div>
 					</div>
 			</div>
@@ -96,7 +103,6 @@
 		</table>
  	
 </div>
-	
 	</div>	
 
 	</div>

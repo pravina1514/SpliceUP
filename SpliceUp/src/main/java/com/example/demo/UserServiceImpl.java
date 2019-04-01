@@ -27,6 +27,9 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	UserMasterRepository userRepo;
 
+	@Autowired
+	ContactRepository conRepo;
+
 	@Override
 	public List<Login> getAllUsers() {
 		return userRepo.findAll();
@@ -41,6 +44,12 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	public Login saveUser(Login user) {
 		return userRepo.save(user);
+	}
+
+	@Override
+	@Transactional
+	public Contact saveUser(Contact user) {
+		return conRepo.save(user);
 	}
 
 	@Override

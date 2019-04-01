@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value = "/Contact")
 
 public class ContactController {
-	
+
 	@Autowired
 	UserService service;
 
@@ -26,16 +26,15 @@ public class ContactController {
 
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/con", method = RequestMethod.POST)
 	public String registration(@ModelAttribute Contact user, Model model) {
-	
+
 		model.addAttribute("user", user);
 		Contact con = service.saveUser(user);
 
-			return "redirect:/event/contact";
+		return "redirect:/Contact/con";
 
-		
 	}
 
 }

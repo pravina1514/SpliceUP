@@ -273,16 +273,6 @@ public class EventController {
 
 	}
 
-	@GetMapping(value = "/contact")
-	public ModelAndView cont() {
-
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("contact");
-		// modelAndView.addObject("eve", user);
-
-		return modelAndView;
-	}
-
 	@GetMapping(value = "/group/{eventId}")
 	public ModelAndView group(@PathVariable Long eventId) {
 		Event event = eventRepo.findById(eventId).get();
