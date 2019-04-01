@@ -31,6 +31,19 @@
 <link th:href="@{/css/chat1.css}" rel="stylesheet">
 <link th:href="@{/css/filter.css}" rel="stylesheet">
 <link th:href="@{/css/animate.css}" rel="stylesheet">
+<style type="text/css" media="screen">
+.has-error input {
+	border-width: 2px;
+}
+
+.validation.text-danger:after {
+	content: 'Validation failed';
+}
+
+.validation.text-success:after {
+	content: 'Validation passed';
+}
+</style>
 
 
 <style>

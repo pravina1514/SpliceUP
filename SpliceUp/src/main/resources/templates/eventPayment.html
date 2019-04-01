@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="default">
+<head>
+<head>
+<meta charset="UTF-8">
+
+
+
+</head>
+
+<body bgcolor="#1b3256">
+	<div id="page" layout:fragment="content" class=" eventdetail">
+		<div id="dynamicContent">
+			<!-- banner -->
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="/event/home">Home</a></li>
+				<li class="breadcrumb-item active"><a href="/event/services">Services</a></li>
+				<li class="breadcrumb-item active">View</li>
+			</ol>
+
+			<div class="main position-relative">
+
+				<input type="hidden" id="eventId" th:value="${eventId}">
+
+			</div>
+			<div class="container">
+
+				<form id="paymentForm" novalidate autocomplete="on" method="POST">
+
+					<div class="form-group">
+						<label for="cc-number" class="control-label">First Name </label> <input
+							id="cc-first-name" class="input-lg form-control " required>
+					</div>
+					<div class="form-group">
+						<label for="cc-number" class="control-label">Last Name </label> <input
+							id="cc-last-name" class="input-lg form-control " required>
+					</div>
+
+					<div class="form-group">
+						<label for="cc-number" class="control-label">Card number
+							formatting </label> <input id="cc-number" type="tel"
+							class="input-lg form-control cc-number" autocomplete="cc-number"
+							placeholder="•••• •••• •••• ••••" required>
+					</div>
+
+					<div class="form-group">
+						<label for="cc-exp" class="control-label">Card expiry
+							formatting</label> <input id="cc-exp" type="tel"
+							class="input-lg form-control cc-exp" autocomplete="cc-exp"
+							placeholder="•• / ••" required>
+					</div>
+
+					<div class="form-group">
+						<label for="cc-cvc" class="control-label">Card CVC
+							formatting</label> <input id="cc-cvc" type="tel"
+							class="input-lg form-control cc-cvc" autocomplete="off"
+							placeholder="•••" required>
+					</div>
+
+					<div class="form-group">
+						<label for="numeric" class="control-label">Restrict
+							numeric</label> <input id="numeric" type="tel"
+							class="input-lg form-control" data-numeric>
+					</div>
+
+					<button type="submit" class="btn btn-lg btn-primary">Submit</button>
+
+					<h2 class="validation"></h2>
+				</form>
+			</div>
+
+
+		</div>
+
+	</div>
+
+</body>
+</html>

@@ -240,6 +240,18 @@ public class EventController {
 		return modelAndView;
 	}
 
+	
+	@RequestMapping(value = "/redirectToPayment/{eventId}", method = RequestMethod.GET)
+	public ModelAndView redirectToPayment(@PathVariable Long eventId) {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("eventPayment");
+		modelAndView.addObject("eventId", eventId);
+
+		return modelAndView;
+
+	}
+	
+	
 	@RequestMapping(value = "/takePart/{eventId}", method = RequestMethod.GET)
 	public String takePart(@PathVariable Long eventId) {
 		Event event = eventRepo.findById(eventId).get();
