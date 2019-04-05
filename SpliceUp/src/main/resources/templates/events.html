@@ -107,13 +107,18 @@
 								th:if="${userName!= i.eventHost.email && i.s_date.after(#dates.createNow())}">
 								<a th:href="@{'/event/takePart/'+${i.eid}}"
 								th:if="${!i.paidEvent}"> <img src="../images/join.png"
-									style="width: 20%; height: 10%;"></img></a> <a
-								th:href="@{'/event/redirectToPayment/'+${i.eid}}"
-								th:if="${i.paidEvent}"> <img src="../images/join.png"
+									style="width: 20%; height: 10%;"></img></a> 
+									
+										</span>
+										
+								<span th:if="${userName!= i.eventHost.email && i.s_date.after(#dates.createNow())}">
+							<a th:href="@{'/event/redirectToPayment/'+${i.eid}}"
+								th:if="${i.paidEvent}"> <img src="../images/pay.png"
 									style="width: 20%; height: 10%;"></img></a>
-
-
-							</span> <span> <a th:href="@{'/event/services/'+${i.eid}}"> <img
+										
+										</span>
+							
+							 <span> <a th:href="@{'/event/services/'+${i.eid}}"> <img
 									src="../images/eye1.png" style="width: 20%; height: 10%;"></img>
 							</a>
 							</span> <br> <span

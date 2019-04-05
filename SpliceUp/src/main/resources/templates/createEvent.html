@@ -65,8 +65,23 @@
 										</div>
 										<div class="form-group">
 											<label>Location</label>
-											<textarea id="textarea" name="location" placeholder=""></textarea>
+											<input class="form-control" type="text" name="location" placeholder="" required>
 										</div>
+										
+										<div class="form-group">
+										<label>Event type</label>
+										<div class="radio" >
+										<label><input type="radio" name="is-paid_event" value="TRUE">Paid</label>
+										<label><input type="radio" name="is-paid_event" value="FALSE" >Free</label>
+										</div>
+										</div>
+										
+										
+										<div class="form-group">
+										<label>Event hosting payment: Rs 250</label>
+										<div><button type="button" class="btn btn-dark">PAY</button></div>
+										
+										<br><br>
 										<div class="input-group1">
 											<input class="form-control" type="submit" value="Submit">
 										</div>
