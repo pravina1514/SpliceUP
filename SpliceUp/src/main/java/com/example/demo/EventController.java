@@ -38,6 +38,9 @@ public class EventController {
 	EventRepository eventRepo;
 
 	@Autowired
+	EventImageRepository eventImageRepo;
+
+	@Autowired
 	CitiesRepository cityRepo;
 
 	@Autowired
@@ -55,7 +58,7 @@ public class EventController {
 	@Autowired
 	ParticipantsGroupRepository groupRepo;
 
-	public static String uploadDir = "E:\\sts\\Workspace\\maven.1535549954053\\SpliceUp\\src\\main\\resources\\static\\images\\upload";
+	public static String uploadDir = "G:\\proejct\\spliceup\\maven.1535556277078\\SpliceUp\\src\\main\\resources\\static\\images\\upload";
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -183,6 +186,12 @@ public class EventController {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("events");
 		modelAndView.addObject("cities", cityRepo.findAll());
+		
+		Login u = service.getLoggedInUser();
+		List<Long> takenPartEvents=new ArrayList<>();
+		
+
+		
 
 		List<Event> eventList = eventRepo.findAll();
 		List<Event> nonExpiredEvents = new ArrayList<>();
@@ -190,6 +199,16 @@ public class EventController {
 			if (event.getE_date() != null && event.getS_date() != null && event.getE_date().after(new Date())) {
 				nonExpiredEvents.add(event);
 			}
+			if(!CollectionUtils.isEmpty(event.getParticipants())) {
+				for(Participant p:event.getParticipants()) {
+					if(p.getUser().getEmail().equals(u.getEmail())) {
+						takenPartEvents.add(event.getEid());
+						
+					}
+				}
+				
+			}
+			
 		}
 		eventList = nonExpiredEvents;
 		List<Event> filteredList = new ArrayList<>();
@@ -209,7 +228,7 @@ public class EventController {
 			modelAndView.addObject("contact", eventList);
 
 		}
-
+		modelAndView.addObject("takenPartEvents", takenPartEvents);
 		return modelAndView;
 	}
 
@@ -240,7 +259,6 @@ public class EventController {
 		return modelAndView;
 	}
 
-	
 	@RequestMapping(value = "/redirectToPayment/{eventId}", method = RequestMethod.GET)
 	public ModelAndView redirectToPayment(@PathVariable Long eventId) {
 		ModelAndView modelAndView = new ModelAndView();
@@ -250,8 +268,7 @@ public class EventController {
 		return modelAndView;
 
 	}
-	
-	
+
 	@RequestMapping(value = "/takePart/{eventId}", method = RequestMethod.GET)
 	public String takePart(@PathVariable Long eventId) {
 		Event event = eventRepo.findById(eventId).get();
@@ -266,13 +283,6 @@ public class EventController {
 
 	}
 
-	/*
-	 * @RequestMapping(value = "/delete/{commentId}", method = RequestMethod.GET)
-	 * public String deleteComment(@PathVariable Long commentId) {
-	 * 
-	 * commentRepo.deleteCommentFromDB(commentId); return
-	 * "redirect:/event/services"; }
-	 */
 
 	@RequestMapping(value = "/postComment", method = RequestMethod.POST)
 	public String createEvent(@ModelAttribute Comment comment) {
@@ -330,6 +340,37 @@ public class EventController {
 		modelAndView.addObject("eventId", eventId);
 
 		return modelAndView;
+
+	}
+
+	@RequestMapping(value = "/eventImages/{eventId}", method = RequestMethod.GET)
+	public ModelAndView eventImages(@PathVariable Long eventId) {
+		Event event = eventRepo.findById(eventId).get();
+		List<EventImage> eventImages = eventImageRepo.findByEvent(event);
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("eventImages");
+		modelAndView.addObject("contact", event);
+
+		modelAndView.addObject("imageList", eventImages);
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "/uploadEventImage", method = RequestMethod.POST)
+	public String uploadEventImage(@ModelAttribute EventImage image, @RequestParam("eventImage") MultipartFile file) {
+		Event event = eventRepo.findById(image.getEvent().getEid()).get();
+		Login user = service.getLoggedInUser();
+		Path mpath = Paths.get(uploadDir, file.getOriginalFilename());
+		try {
+			java.nio.file.Files.write(mpath, file.getBytes());
+			image.setIpath("/images/upload/" + file.getOriginalFilename());
+		} catch (Exception e) {
+			System.out.print(e);
+		}
+		
+		image.setUser(user);
+		image.setEvent(event);
+		eventImageRepo.save(image);
+		return "redirect:/event/eventImages/" + event.getEid();
 
 	}
 

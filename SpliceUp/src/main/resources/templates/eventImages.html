@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
@@ -37,52 +36,46 @@
 
 						<div class="col-6 event-data">
 							<p>
-								Description:<br>
-								<span th:text="${contact.description}"></span>
+								Description:<br> <span th:text="${contact.description}"></span>
 							</p>
 							<br>
 							<p>
-								Starting Date:<br>
-								<span class="dateFieldCpm d-none" th:text="${contact.s_date}"></span>
+								Starting Date:<br> <span class="dateFieldCpm d-none"
+									th:text="${contact.s_date}"></span>
 							</p>
 							<br>
 							<p>
-								Ending Date:<br>
-								<span class="dateFieldCpm d-none" th:text="${contact.e_date}"></span>
+								Ending Date:<br> <span class="dateFieldCpm d-none"
+									th:text="${contact.e_date}"></span>
 							</p>
 							<br>
 
 							<p>
-								Location:<br>
-								<span th:text="${contact.location}"></span>
+								Location:<br> <span th:text="${contact.location}"></span>
 							</p>
 							<br>
 						</div>
 					</div>
 			</div>
+			<div class="row pt-5" th:each="i : ${imageList}">
 
-			<form th:action="@{/event/postComment}" method="post">
+				<img th:src="${i.ipath}" class="img-fluid" alt="Card image cap">
+			</div>
+			<form th:action="@{/event/uploadEventImage}"
+				enctype="multipart/form-data" method="post">
 
 				<div class="col-12 event-comment">
-					<div class="form-group event-label">
-						<label class="event-label"></label>
-						<textarea class="event-text" rows="5" cols="150"
-							name="description" placeholder="Write a comment"
-							required="required"></textarea>
+					<div class="form-group">
+						<label>Event Image</label> <input class="form-control" type="file"
+							placeholder="" name="eventImage" required="required">
 					</div>
 				</div>
 
 				<input type="hidden" name="event.eid" th:value="${contact.eid}">
 
 				<div class="input-group1 main-event-button">
-					<button class="btn btn-danger btn-block event-button" type="submit">Post
-						Comment</button>
-				</div>
-				<div style="color: #80b7b2;" class="row pt-5"
-					th:each="i : ${eventComments}">
-
-					<span th:text="${i.description}"></span>
-
+					<button class="btn btn-danger btn-block event-button" type="submit">Upload
+						Image</button>
 				</div>
 
 			</form>
@@ -91,32 +84,7 @@
 
 		</div>
 
-		<div class="event-final">
 
-			<input type="checkbox" name="toggle" id="toggle" /> <label
-				for="toggle"></label>
-
-			<div class="message">
-
-				<table id="example" class="table table-striped table-bordered"
-					cellspacing="0" width="100%" style="overflow-y: scroll;">
-
-					<tbody>
-						<tr th:if="${entries.empty}">
-							<td colspan="2">No participants</td>
-						</tr>
-						<tr th:each="i : ${entries}">
-
-							<td><span th:text="${i.user.userDetail.name}"></span></td>
-
-						</tr>
-
-					</tbody>
-
-				</table>
-
-			</div>
-		</div>
 
 	</div>
 
