@@ -58,7 +58,7 @@ public class EventController {
 	@Autowired
 	ParticipantsGroupRepository groupRepo;
 
-	public static String uploadDir = "G:\\proejct\\spliceup\\maven.1535556277078\\SpliceUp\\src\\main\\resources\\static\\images\\upload";
+	public static String uploadDir = "E:\\sts\\Workspace\\maven.1535549954053\\SpliceUp\\src\\main\\resources\\static\\images\\upload";
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -186,12 +186,9 @@ public class EventController {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("events");
 		modelAndView.addObject("cities", cityRepo.findAll());
-		
-		Login u = service.getLoggedInUser();
-		List<Long> takenPartEvents=new ArrayList<>();
-		
 
-		
+		Login u = service.getLoggedInUser();
+		List<Long> takenPartEvents = new ArrayList<>();
 
 		List<Event> eventList = eventRepo.findAll();
 		List<Event> nonExpiredEvents = new ArrayList<>();
@@ -199,16 +196,16 @@ public class EventController {
 			if (event.getE_date() != null && event.getS_date() != null && event.getE_date().after(new Date())) {
 				nonExpiredEvents.add(event);
 			}
-			if(!CollectionUtils.isEmpty(event.getParticipants())) {
-				for(Participant p:event.getParticipants()) {
-					if(p.getUser().getEmail().equals(u.getEmail())) {
+			if (!CollectionUtils.isEmpty(event.getParticipants())) {
+				for (Participant p : event.getParticipants()) {
+					if (p.getUser().getEmail().equals(u.getEmail())) {
 						takenPartEvents.add(event.getEid());
-						
+
 					}
 				}
-				
+
 			}
-			
+
 		}
 		eventList = nonExpiredEvents;
 		List<Event> filteredList = new ArrayList<>();
@@ -283,7 +280,6 @@ public class EventController {
 
 	}
 
-
 	@RequestMapping(value = "/postComment", method = RequestMethod.POST)
 	public String createEvent(@ModelAttribute Comment comment) {
 		Event event = eventRepo.findById(comment.getEvent().getEid()).get();
@@ -356,9 +352,12 @@ public class EventController {
 	}
 
 	@RequestMapping(value = "/uploadEventImage", method = RequestMethod.POST)
-	public String uploadEventImage(@ModelAttribute EventImage image, @RequestParam("eventImage") MultipartFile file) {
+	public String uploadEventImage(@ModelAttribute EventImage image, ModelAndView mv,
+			@RequestParam("eventImage") MultipartFile file) {
 		Event event = eventRepo.findById(image.getEvent().getEid()).get();
 		Login user = service.getLoggedInUser();
+		mv.addObject("contact", event);
+
 		Path mpath = Paths.get(uploadDir, file.getOriginalFilename());
 		try {
 			java.nio.file.Files.write(mpath, file.getBytes());
@@ -366,7 +365,7 @@ public class EventController {
 		} catch (Exception e) {
 			System.out.print(e);
 		}
-		
+
 		image.setUser(user);
 		image.setEvent(event);
 		eventImageRepo.save(image);

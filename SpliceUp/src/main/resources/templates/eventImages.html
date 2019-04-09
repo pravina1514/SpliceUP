@@ -13,7 +13,7 @@
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="/event/home">Home</a></li>
 				<li class="breadcrumb-item active"><a href="/event/services">Services</a></li>
-				<li class="breadcrumb-item active">View</li>
+				<li class="breadcrumb-item active">Images</li>
 			</ol>
 
 			<div class="main position-relative">
@@ -25,48 +25,24 @@
 
 
 
-				<section>
+				
 
-					<div class="row pt-5 eventdetail-data">
-						<div class="col-6 event-img">
-
-							<img th:src="${contact.image}" class="img-fluid"
-								alt="Card image cap">
-						</div>
-
-						<div class="col-6 event-data">
-							<p>
-								Description:<br> <span th:text="${contact.description}"></span>
-							</p>
-							<br>
-							<p>
-								Starting Date:<br> <span class="dateFieldCpm d-none"
-									th:text="${contact.s_date}"></span>
-							</p>
-							<br>
-							<p>
-								Ending Date:<br> <span class="dateFieldCpm d-none"
-									th:text="${contact.e_date}"></span>
-							</p>
-							<br>
-
-							<p>
-								Location:<br> <span th:text="${contact.location}"></span>
-							</p>
-							<br>
-						</div>
-					</div>
-			</div>
-			<div class="row pt-5" th:each="i : ${imageList}">
-
-				<img th:src="${i.ipath}" class="img-fluid" alt="Card image cap">
-			</div>
+			
+			<span th:each="i : ${imageList}">
+			
+        	<img class="three" th:src="${i.ipath}" height=200px; width=200px; />
+        	
+        	</span>
+   			
+   			<div  th:each="i : ${contact}">
+			<span th:if="${userName == i.eventHost.email}">
+			
 			<form th:action="@{/event/uploadEventImage}"
-				enctype="multipart/form-data" method="post">
-
+				enctype="multipart/form-data" method="post" >
+	
 				<div class="col-12 event-comment">
 					<div class="form-group">
-						<label>Event Image</label> <input class="form-control" type="file"
+						<input class="form-control" type="file"
 							placeholder="" name="eventImage" required="required">
 					</div>
 				</div>
@@ -79,8 +55,11 @@
 				</div>
 
 			</form>
+			</span>
+			</div>
+			
 
-			</section>
+			
 
 		</div>
 
