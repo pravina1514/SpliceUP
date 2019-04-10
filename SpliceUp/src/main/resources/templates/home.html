@@ -2,8 +2,18 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="default">
+	
+	<head>
+	<script th:src="@{/js/chatJs.js}"></script>
+	
+	<link th:href="@{/css/chatCss.css}" type="text/css"
+	rel="stylesheet" media="all">
+	
+	</head>
     
 <body >  
+
+ 
 <div id="page" layout:fragment="content">
 <div id="dynamicContent">
 		
@@ -57,8 +67,16 @@
        
     </div>    
     </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
    </div>
-   </div>
-       
+    </div>
     </body>
 </html>

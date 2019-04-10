@@ -3,6 +3,11 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="default">
 
+<head>
+
+			
+ 
+</head>
 
 <body >
 	<div id="page" layout:fragment="content">
@@ -68,13 +73,52 @@
 											<input class="form-control" type="text" name="location" placeholder="" required>
 										</div>
 										
-										<div class="form-group">
+							<!-- <div class="form-group">
 										<label>Event type</label>
 										<div class="radio" >
-										<label><input type="radio" name="is-paid_event" value="TRUE">Paid</label>
-										<label><input type="radio" name="is-paid_event" value="FALSE" >Free</label>
+										
+										<label for="chkyes">
+										<label><input type="radio" name="is-paid_event" id="chkyes" value="TRUE" onclick="ShowHideDiv()">Paid</label>
+										</label>
+										<label for="chkno">
+										<label><input type="radio" name="is-paid_event" id="chkno" value="FALSE" onclick="ShowHideDiv()" >Free</label>
+										</label>
+										<div id="dvPassport" style="display: none">
+   										 Enter Price:
+  										  <input type="text" id="txtPassportNumber" />
+												</div>
 										</div>
 										</div>
+										 -->	
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("input[name='paidEvent']").click(function () {
+            if ($("#chkYes").is(":checked")) {
+                $("#dvPassport").show();
+            } else {
+                $("#dvPassport").hide();
+            }
+        });
+    });
+</script>	
+<div class="form-group">	
+										
+										<span>Event Type?</span>
+<label for="chkYes">
+    <input type="radio" id="chkYes" name="paidEvent" value="TRUE" />
+    Paid
+</label>
+<label for="chkNo">
+    <input type="radio" id="chkNo" name="paidEvent" value="FALSE" />
+   Free
+</label>
+<hr />
+<div id="dvPassport" style="display: none">
+    Enter Amount:
+    <input type="number" id="txtPassportNumber" />
+</div>
+</div>
 										
 										
 										<div class="form-group">
@@ -94,6 +138,9 @@
 			</section>
 		</div>
 	</div>
+	
+	
+
 
 </body>
 

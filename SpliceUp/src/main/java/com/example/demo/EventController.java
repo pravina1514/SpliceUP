@@ -133,9 +133,10 @@ public class EventController {
 
 		Event dbEvent = eventRepo.save(event);
 		model.addAttribute("emailSent", "false");
+		List<Participant> dbParticipants=participantsRepo.findByEvent(dbEvent);
 
-		if (!CollectionUtils.isEmpty(dbEvent.getParticipants())) {
-			for (Participant p : dbEvent.getParticipants()) {
+		if (!CollectionUtils.isEmpty(dbParticipants)) {
+			for (Participant p : dbParticipants) {
 
 				try {
 					smtpMailSender.send(p.getUser().getEmail(), event.getName(),
@@ -276,6 +277,17 @@ public class EventController {
 		p.setPayment(false);
 		p.setUser(user);
 		participantsRepo.save(p);
+
+		try {
+			smtpMailSender.send(p.getUser().getEmail(), event.getName(),
+					"You have taken Part in "+event.getName()+" Event. Login to application for more details." );
+
+		}
+
+		catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return "redirect:/event/services";
 
 	}

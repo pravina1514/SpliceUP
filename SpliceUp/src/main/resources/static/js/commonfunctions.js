@@ -18,3 +18,15 @@ function filterEvents() {
 	window.location = "/event/services?cityName=" + $("#cityDropdown").val()
 			+ "&location=" + $("#locationField").val();
 }
+
+function postComment() {
+
+	$.ajax({
+		type : 'POST',
+		url : "/event/eventChat?eventId=" + $("#eventId").val() + "?message="
+				+ $("#eventMessage").val(),
+		success : function(resultData) {
+
+		}
+	});
+}
