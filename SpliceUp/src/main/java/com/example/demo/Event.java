@@ -41,6 +41,15 @@ public class Event {
 	private Date s_date;
 	private Date e_date;
 	private String location;
+	private int price;
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
 
 	public Long getEid() {
 		return eid;
@@ -145,5 +154,8 @@ public class Event {
 	public void setParticipants(List<Participant> participants) {
 		this.participants = participants;
 	}
+
+	
+	
 
 }
