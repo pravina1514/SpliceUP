@@ -83,6 +83,15 @@ public class EventController {
 		return modelAndView;
 	}
 
+	@GetMapping(value = "/payment")
+	public ModelAndView payment() {
+
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("eventPayment");
+
+		return modelAndView;
+	}
+
 	@GetMapping(value = "/about")
 	public ModelAndView about() {
 
@@ -133,7 +142,7 @@ public class EventController {
 
 		Event dbEvent = eventRepo.save(event);
 		model.addAttribute("emailSent", "false");
-		List<Participant> dbParticipants=participantsRepo.findByEvent(dbEvent);
+		List<Participant> dbParticipants = participantsRepo.findByEvent(dbEvent);
 
 		if (!CollectionUtils.isEmpty(dbParticipants)) {
 			for (Participant p : dbParticipants) {
@@ -280,7 +289,7 @@ public class EventController {
 
 		try {
 			smtpMailSender.send(p.getUser().getEmail(), event.getName(),
-					"You have taken Part in "+event.getName()+" Event. Login to application for more details." );
+					"You have taken Part in " + event.getName() + " Event. Login to application for more details.");
 
 		}
 
@@ -330,6 +339,19 @@ public class EventController {
 		ParticipantsGroup dbGroup = groupRepo.save(group);
 		for (String id : partId) {
 			Participant p = participantsRepo.findById(Long.parseLong(id)).get();
+
+			/*
+			 * try { smtpMailSender.send(p.getUser().getEmail(), event.getName(),
+			 * "changes in event you have participated, please visit website for details");
+			 * 
+			 * }
+			 * 
+			 * catch (MessagingException e) { // TODO Auto-generated catch block
+			 * e.printStackTrace();
+			 * 
+			 * }
+			 */
+
 			p.setPartiCipantGroup(dbGroup);
 			participantsRepo.save(p);
 		}

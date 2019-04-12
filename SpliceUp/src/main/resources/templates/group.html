@@ -2,14 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="default">
-<body>
+<body bgcolor="#4A235A">
 	<div id="page" layout:fragment="content">
 		<div id="dynamicContent">
 			<form th:action="@{/event/manageGroup}" th:object="${partGroup}"
 				method="post">
 
 				<div class="form-group">
-					<label for="contain">Participants</label> <select required="required"
+					<label style="color:white;" for="contain">Participants</label> <select required="required"
 						class="form-control" name="partiCipantList" multiple>
 						<option th:each="i : ${entries}" th:value="${i.id}"
 							th:text="${i.user.userDetail.name}">    </option>
@@ -18,7 +18,7 @@
 
 
 				<div class="form-group">
-					<label for="contain">Group Name:</label> <input name="groupName" required="required"
+					<label style="color:white;" for="contain">Group Name:</label> <input name="groupName" required="required"
 						id="locationField" class="form-control search-box-style"
 						type="text" />
 				</div>
@@ -27,7 +27,7 @@
 
 
 				<div class="form-group">
-					<label for="contain">Group Discription:</label> <input required="required"
+					<label style="color:white;" for="contain">Group Discription:</label> <input required="required"
 						id="locationField" name="groupDescirption"
 						class="form-control search-box-style" type="text" />
 				</div>

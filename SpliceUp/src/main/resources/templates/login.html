@@ -83,18 +83,17 @@ input[type="Password"] {
 }
 </style>
 </head>
-<body>
+    <body background="../images/m2.jpg" background-size="cover">  
+
 
 	<div class="loginform">
 		<h1> </h1>
 				<h1> </h1>
 		<div class="container">
 			<!-- main content -->
-			<div class="agile_info">
+			
 				<div class="w3l_form" style="padding:0;margin:0;">
-					<div class="left_grid_info">
-						<img src="images/smile.jpg" alt="" style="width:369px; height:403px"/>
-					</div>
+					
 				</div>
 				<div class="w3_info">
 					<form th:action="@{/login/doLogin}" th:object="${user}"
@@ -122,7 +121,7 @@ input[type="Password"] {
 						Forgot Password? <a href="/login/forgotPassword">Reset Now</a>
 					</p>
 				</div>
-			</div>
+			
 			<!-- //main content -->
 		</div>
 		<!-- footer -->

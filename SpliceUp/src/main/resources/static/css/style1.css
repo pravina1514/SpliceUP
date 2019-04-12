@@ -26,7 +26,7 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
 	margin: 0;
-	color: #777;
+	color: purple;
 	font-size: 1em;
 	line-height: 1.8;
 }
@@ -810,7 +810,7 @@ h5.tittle-w3 {
 }
 
 h3.subheading-wthree {
-	color: #80b7b2;
+	color: purple;
 	font-size: 25px;
 	letter-spacing: 3px;
 }

@@ -86,12 +86,35 @@ body {
     display:inline-block;
     margin-right:10px;
     font-size:5em;
-    color:#80b7b2;
+    
+    color:PURPLE;
     opacity:1;
     transition:all 8s ease;
 }
 
 .fly-in-text li:nth-child(5)
+{
+    margin-right:0;
+}
+
+.fly{
+    list-style:none;
+   
+    
+
+}
+
+.fly li{
+    display:inline-block;
+    margin-right:10px;
+    font-size:1em;
+  
+    color:PURPLE;
+    opacity:1;
+    transition:all 8s ease;
+}
+
+.fly li:nth-child(5)
 {
     margin-right:0;
 }

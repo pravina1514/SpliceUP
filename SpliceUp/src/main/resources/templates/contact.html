@@ -3,18 +3,18 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="default">
 
-<body >
+    <body background="../images/m2.jpg" background-size="cover">  
 
 <div id="page" layout:fragment="content">
 <div id="dynamicContent">
-<div class="title">
-<h1>Contact Us </h1>
+<div class="title" >
+<h1 style="color:purple">Contact Us </h1>
 
 
 </div>
 
 <div class="box">
-<h2>Get In Touch</h2>
+<h2 style="color:#80b7b2">Get In Touch</h2><br>
 	<form th:action="@{/Contact/con}" th:object="${user}" method="post" id="contact_form">
 		<input type="text" name="name" class="form-control" placeholder="name" required><br>
 		<input type="email" name="email" class="form-control" placeholder="email" required><br>

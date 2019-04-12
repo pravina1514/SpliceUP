@@ -3,7 +3,8 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="default">
 
-<body >
+<body background="../images/m2.jpg" background-size="cover">  
+
 
     
 <div id="page" layout:fragment="content">
@@ -44,9 +45,15 @@
 			
 		</div>
 
+	<a th:href="@{http://www.facebook.com}">
+<img src="../images/fff.png" height="40px" width="40px" style="position:fixed;left:1150px; right:0px;bottom:15px;">
+</a>
+	<a th:href="@{http://www.instagram.com}"><img src="../images/iii.png" height="40px" width="40px" style="position:fixed;left:1200px; right:0px; bottom:15px;">
+	</a>
 	
+	<a th:href="@{http://www.googleplus.com}"><img src="../images/ggg.png" height="40px" width="40px" style="position:fixed;left:1100px; right:0px;bottom:15px;">
+	</a>
     
-	
 			
 			</div>
 			</div>
