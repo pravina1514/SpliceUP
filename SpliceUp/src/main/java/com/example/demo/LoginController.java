@@ -2,8 +2,6 @@ package com.example.demo;
 
 import java.util.UUID;
 
-import javax.mail.MessagingException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -138,7 +136,7 @@ public class LoginController {
 				model.addAttribute("userNotFound", "false");
 				model.addAttribute("emailSent", "true");
 
-			} catch (MessagingException e) {
+			} catch (Exception e) {
 				model.addAttribute("userNotFound", "true");
 				model.addAttribute("emailSent", "false");
 

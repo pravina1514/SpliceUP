@@ -293,7 +293,7 @@ public class EventController {
 
 		}
 
-		catch (MessagingException e) {
+		catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
